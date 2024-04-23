@@ -11,7 +11,7 @@ namespace db_Project
 {
 
 
-    public partial class login
+    public partial class premium
     {
     }
 }

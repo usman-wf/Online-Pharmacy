@@ -1,170 +1,381 @@
-﻿<%@ Page Title="Login" Language="C#"   AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="db_Project.About" %>
+﻿ 
 
-  <!DOCTYPE html>
+
+<%@ Page Title="Home" Language="C#"   AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="db_Project.About" %>
+
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Login</title>
-    <style>
- @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
- *{
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
-   font-family: 'Poppins', sans-serif;
- }
- html,body{
-   display: grid;
-   height: 100%;
-   width: 100%;
-   place-items: center;
-   background: #f2f2f2;
-   /* background: linear-gradient(-135deg, #c850c0, #4158d0); */
- }
- ::selection{
-   background: #4158d0;
-   color: #fff;
- }
- .wrapper{
-   width: 380px;
-   background: #fff;
-   border-radius: 15px;
-   box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
- }
- .wrapper .title{
-   font-size: 35px;
-   font-weight: 600;
-   text-align: center;
-   line-height: 100px;
-   color: #fff;
-   user-select: none;
-   border-radius: 15px 15px 0 0;
-   background: linear-gradient(-135deg, #c850c0, #4158d0);
- }
- .wrapper form{
-   padding: 10px 30px 50px 30px;
- }
- .wrapper form .field{
-   height: 50px;
-   width: 100%;
-   margin-top: 20px;
-   position: relative;
- }
- .wrapper form .field input{
-   height: 100%;
-   width: 100%;
-   outline: none;
-   font-size: 17px;
-   padding-left: 20px;
-   border: 1px solid lightgrey;
-   border-radius: 25px;
-   transition: all 0.3s ease;
- }
- .wrapper form .field input:focus,
- form .field input:valid{
-   border-color: #4158d0;
- }
- .wrapper form .field label{
-   position: absolute;
-   top: 50%;
-   left: 20px;
-   color: #999999;
-   font-weight: 400;
-   font-size: 17px;
-   pointer-events: none;
-   transform: translateY(-50%);
-   transition: all 0.3s ease;
- }
- form .field input:focus ~ label,
- form .field input:valid ~ label{
-   top: 0%;
-   font-size: 16px;
-   color: #4158d0;
-   background: #fff;
-   transform: translateY(-50%);
- }
- form .content{
-   display: flex;
-   width: 100%;
-   height: 50px;
-   font-size: 16px;
-   align-items: center;
-   justify-content: space-around;
- }
- form .content .checkbox{
-   display: flex;
-   align-items: center;
-   justify-content: center;
- }
- form .content input{
-   width: 15px;
-   height: 15px;
-   background: red;
- }
- form .content label{
-   color: #262626;
-   user-select: none;
-   padding-left: 5px;
- }
- form .content .pass-link{
-   color: "";
- }
- form .field input[type="submit"]{
-   color: #fff;
-   border: none;
-   padding-left: 0;
-   margin-top: -10px;
-   font-size: 20px;
-   font-weight: 500;
-   cursor: pointer;
-   background: linear-gradient(-135deg, #c850c0, #4158d0);
-   transition: all 0.3s ease;
- }
- form .field input[type="submit"]:active{
-   transform: scale(0.95);
- }
- form .signup-link{
-   color: #262626;
-   margin-top: 20px;
-   text-align: center;
- }
- form .pass-link a,
- form .signup-link a{
-   color: #4158d0;
-   text-decoration: none;
- }
- form .pass-link a:hover,
- form .signup-link a:hover{
-   text-decoration: underline;
- }
-</style>
+    <title>Home</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+ <style>
+   
+.client-item {
+    padding: 34px;
+}
+  
 
+.center
+{
+    text-align: center;
+   
+} 
+
+
+#clients{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#clients img{
+
+    height: 150px;
+    width: 150px;
+}
+
+.client-item{
+    padding: 34px;
+}
+
+
+#client-section::before{
+    content: "";
+    position: absolute;
+    background: url(images/back.jpg) no-repeat center/cover;
+width: 100%;
+height: 50%;
+z-index: -1;
+opacity: 0.4;
+}
+
+body::before{
+    content: "";
+    position: absolute;
+    background: url(images/back.jpg) no-repeat center/cover;
+width: 100%;
+height: 100%;
+z-index: -1;
+opacity: 0.4;
+}
+
+
+.h-primary center::before
+{
+    content: "";
+    position: absolute;
+    background: url(images/back.jpg) no-repeat center/cover;
+width: 100%;
+height: 100%;
+z-index: -1;
+opacity: 0.4;
+}
+
+.about::before{
+    content: "";
+    position: absolute;
+    background: url(images/back.jpg) no-repeat center/cover;
+width: 100%;
+height: 100%;
+z-index: -1;
+opacity: 0.4;
+}
+
+
+        .head {
+            background-color: #f8f9fa; /* Set background color */
+            padding: 20px 0; /* Add padding to the top and bottom of the header */
+            display: flex; /* Use flexbox */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+             /* Add margin from the top */
+        }
+
+        .navbar {
+            width: 100%; /* Ensure the navbar stretches across the screen */
+            border: none; /* Remove any border */
+            margin-top: 10px; /* Add margin from the top */
+        }
+
+  
+
+ 
+
+.about{
+    background-color: black;
+    color: white;
+}
+
+.catalog-scroll-container {
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent items from wrapping */
+}
+
+.catalog-container {
+    /* Display cards horizontally */
+  overflow-x: auto; /* Enable horizontal scrolling for the container */
+white-space: nowrap;
+}
+
+.product-card {
+    display: inline-block; 
+  width: 300px;
+  margin-right: 20px; /* Add margin between cards */
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.product-card img {
+  width: 100%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.product-card h2 {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.product-card p {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+ 
+
+ 
+.head {
+    background-color: #f8f9fa; /* Set background color */
+    padding: 10px 0; /* Add padding to the header */
+}
+
+ 
+
+#logo img {
+    max-width: 100%; /* Make sure the logo image doesn't exceed its container */
+     /* Maintain aspect ratio */
+}
+
+#logo::before{
+    background: url(images/back.jpg) no-repeat center/cover;
+}
+
+.navbar-brand {
+    display: none; /* Hide the navbar brand */
+}
+
+.navbar-toggler {
+    border: none; /* Remove border from the toggler */
+}
+
+.navbar-nav {
+    list-style-type: none; /* Remove bullet points from navbar items */
+}
+
+.nav-item {
+    margin-right: 15px; /* Add some spacing between navbar items */
+}
+
+.nav-link {
+    color: #212529; /* Set text color for navbar links */
+    text-decoration: none; /* Remove default underline */
+    transition: color 0.3s; /* Add smooth transition for color change */
+}
+
+#logo::before{
+    background-color: black;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: #007bff; /* Change text color on hover or focus */
+}
+
+.nav-link.active {
+    font-weight: bold; /* Highlight active navbar link */
+}
+
+.dropdown-menu {
+    background-color: #fff; /* Set background color for dropdown menu */
+    border: 1px solid #ced4da; /* Add border to dropdown menu */
+    border-radius: 0.25rem; /* Add some border radius */
+}
+
+.dropdown-item {
+    color: #212529; /* Set text color for dropdown items */
+    text-decoration: none; /* Remove default underline */
+    transition: background-color 0.3s; /* Add smooth transition for background color change */
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: #f8f9fa; /* Change background color on hover or focus */
+}
+
+.dropdown-divider {
+    border-top: 1px solid #ced4da; /* Add border above dropdown divider */
+}
+
+.form-control {
+   
+    width: 200px; /* Set width for form input */
+    margin-right: 10px; /* Add spacing between form input and button */
+}
+
+.btn-outline-success {
+    color: #28a745; /* Set text color for button */
+    border-color: #28a745; /* Set border color for button */
+}
+
+.btn-outline-success:hover,
+.btn-outline-success:focus {
+    color: #fff; /* Change text color on hover or focus */
+    background-color: #28a745; /* Change background color on hover or focus */
+    border-color: #28a745; /* Change border color on hover or focus */
+}
+
+.searchBar {
+         position:  absolute;
+right: 5%;
+
+        }
+
+
+.btn btn-outline-success{
+    
+    display: flex;
+}
+
+    </style>
 </head>
-<body>
-    <form runat="server">
-        <div class="wrapper">
-            <div class="title">
-            Login To Account
-         </div>
-              
-
-          
-            <asp:Label ID="lblMessage" runat="server" CssClass="message" Text=""></asp:Label>
-            <div   type="text"  class="field">
-                <asp:TextBox runat="server" ID="txtEmail" placeholder="Email"></asp:TextBox>
+ <body>
+    <header class="head">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col">
+                        <div id="logo" class="d-flex align-items-center justify-content-start">
+                            <img src="images/logo2.png" alt="image not available" width="50" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                              <%--  <li class="nav-item">
+                                    <a class="nav-link" href="login.aspx">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="register.aspx">Register</a>
+                                </li>--%>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="update_info.aspx">Update Info</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="premium.aspx">Payment</a>
+                                </li>
+                            </ul>
+                            <form class="searchBar" role="search">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div  class="field">
-                <asp:TextBox runat="server" ID="txtPassword" TextMode="Password" placeholder="Password"></asp:TextBox>
-            </div>     
+        </nav>
+    </header>
+   
+
+    
+          <div class="back">
+            <h1>Our Products</h1>
+            <div class="catalog-container">
+                <div class="product-card">
+                    <img src="images/bp.jpg" alt="Product 000" />
+                    <h2>BP Operator</h2>
+                    <p>Rs.2500</p>
+                </div>
+                <div class="product-card">
+                    <img src="images/vitaminC.jpg" alt="Product 00" />
+                    <h2>vitamin C</h2>
+                    <p>Rs.550</p>
+                </div>
+                <div class="product-card">
+                    <img src="images/pediasure.jpg" alt="Product 0" />
+                    <h2>PediaSure</h2>
+                    <p>Rs.550</p>
+                </div>
+                <div class="product-card">
+                    <img src="images/Panadol.jpg" alt="Product 1" />
+                    <h2>Panadol</h2>
+                    <p>Rs.10</p>
+                </div>
+                <div class="product-card">
+                    <img src="images/Disprin.jpeg.jpg" alt="Product 2" />
+                    <h2>Disprin</h2>
+                    <p>Rs.20</p>
+                </div>
+                <div class="product-card">
+                    <img src="images/strepsils.jpg" alt="Product 3" />
+                    <h2>Strepsils</h2>
+                    <p>Rs.50</p>
+                </div>
+                <div class="product-card">
+                    <img src="images/Dove soap.jpg" alt="Product 7" />
+                    <h2>Dove Soap</h2>
+                    <p>Rs.500</p>
+                </div>
+                <div class="product-card">
+                    <img src="images/Johnson's.jpg" alt="Product 8" />
+                    <h2>Johnsons Shampoo</h2>
+                    <p>Rs.450</p>
+                </div>
+                <div class="product-card">
+                    <img src="images/dettol.jpg" alt="Product 9" />
+                    <h2>Dettol</h2>
+                    <p>Rs.500</p>
+                </div>
+            </div>
+        
             
-                <asp:Button runat="server"  CssClass="btn" />
-              <div class="field">
-               <input type="submit" value="Login">
-            </div>
-               
-             </div>
 
+            <div class="about">
+                <h1>CLINIX</h1>
+                <p>
+                    Clinix is Pakistans leading digital healthcare platform that brings you complete health facilities right to your doorstep. Order medicines online with our e-pharmacy or consult top doctors online in Pakistan from our App right from the comfort of your home. Dawaai Pakistan is the first-ever internationally certified and registered healthcare merchant (LegitScript Certified). We pride ourselves in providing our users with authentic medicines, medical equipment and health supplements in Pakistan.
+<br>
+Moreover, you can opt to get to avail at-home care services such as home nursing services or book lab tests online. Over the years we have built trust by offering our users the utmost convenience to buy medicines. Get your prescriptions online and get monthly refill facilities with Dawaai Asaan orders. You can also get information about your medicines and learn its uses with our official medical content that will help you make better health choices.
+<br>
+You can order online medicines, health products, lab test services,online doctor consultations from anywhere in Pakistan with ease (Karachi, Islamabad, Lahore, Rawalpindi & more) by using our fast medicine delivery service . In Karachi, you can get your selected medicines within 60 minutes of your order confirmation with dShops. Our mobile application is available on iOS andandroid.
+
+                </p>
+            </div>
+
+            <section id="client-section">
+                <h1 class="h-primary center">Our Partners</h1>
+                <div id="clients">
+                    <div class="client-item">
+                        <img src="images/tcs.png" alt="" />
+                    </div>
+                    <div class="client-item">
+                        <img src="images/lab.jpeg" alt="" />
+                    </div>
+                    <div class="client-item">
+                        <img src="images/sk logo.png" alt="" />
+                    </div>
+                </div>
+            </section>
         </div>
-    </form>
+  
+</body>
+
 </body>
 </html>
