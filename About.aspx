@@ -276,11 +276,14 @@ right: 5%;
                                     <a class="nav-link" href="register.aspx">Register</a>
                                 </li>--%>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="update_info.aspx">Update Info</a>
+                                    <a class="nav-link" href="Info.aspx">Update Info</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="premium.aspx">Payment</a>
                                 </li>
+                                 <li class="nav-item">
+     <a class="nav-link" href="adminHome.aspx">Admin</a>
+ </li>
                             </ul>
                             <form class="searchBar" role="search">
                                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />

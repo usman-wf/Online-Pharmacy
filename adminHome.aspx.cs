@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace db_Project
 {
-    public partial class update : System.Web.UI.Page
+    public partial class adminLogin : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

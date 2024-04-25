@@ -1,7 +1,7 @@
 ﻿
 
 
-<%@ Page Title="Login" Language="C#" AutoEventWireup="true" CodeBehind="Info.aspx.cs" Inherits="db_Project.Info" %>
+<%@ Page Title="Info" Language="C#" AutoEventWireup="true" CodeBehind="Info.aspx.cs" Inherits="db_Project.Info" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -75,39 +75,39 @@
             <h1>Update Information</h1>
             <div class="formgroup">
                 <label for="firstName">First Name</label>
-                <input type="text" name="firstName" id="firstName" placeholder="Enter First Name" required>
+                <input type="text" name="firstName" id="firstName" placeholder="Enter First Name"  />
             </div>
             <div class="formgroup">
                 <label for="lastName">Last Name</label>
-                <input type="text" name="lastName" id="lastName" placeholder="Enter Last Name" required>
+                <input type="text" name="lastName" id="lastName" placeholder="Enter Last Name" />
             </div>
             <div class="formgroup">
                 <label for="phoneNum">Phone Number</label>
-                <input type="tel" name="phoneNum" id="phoneNum" placeholder="Enter Number" required>
+                <input type="tel" name="phoneNum" id="phoneNum" placeholder="Enter Number" />
             </div>
             <div class="formgroup">
                 <label for="age">Age</label>
-                <input type="number" name="age" id="age" placeholder="Enter Age" required>
+                <input type="number" name="age" id="age" placeholder="Enter Age" />
             </div>
             <div class="formgroup">
                 <label for="dob">Date of Birth</label>
-                <input type="date" name="dob" id="dob" placeholder="Enter Date of Birth" required>
+                <input type="date" name="dob" id="dob" placeholder="Enter Date of Birth" />
             </div>
             <div class="formgroup">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Enter Email" required>
+                <input type="email" name="email" id="email" placeholder="Enter Email" />
             </div>
             <div class="formgroup">
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" placeholder="Enter Password" required>
+                <input type="password" name="password" id="password" placeholder="Enter Password" />
             </div>
             <div class="formgroup">
                 <label for="username">Username</label>
-                <input type="text" name="username" id="username" placeholder="Enter Username" required>
+                <input type="text" name="username" id="username" placeholder="Enter Username" />
             </div>
             <div class="formgroup">
                 <label for="address">Address</label>
-                <textarea name="address" id="address" placeholder="Enter Address" required></textarea>
+                <textarea name="address" id="address" placeholder="Enter Address" ></textarea>
             </div>
             <button type="submit" class="btn" id="submit">Submit</button>
         </div>
