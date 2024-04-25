@@ -57,7 +57,7 @@ namespace Railway_Management_System.DAL
                 return instance;
             }
         }
-        public static void UpdateUser(int id , string fn , string ln)
+        public static void UpdateUser(int id, string fn, string ln)
         {
             instance.FirstName = fn;
             instance.LastName = ln;

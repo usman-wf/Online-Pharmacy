@@ -120,7 +120,7 @@ button:hover {
 </html>--%>
 
 
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Contact.aspx.cs" Inherits="db_Project.Contact" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Register.aspx.cs" Inherits="db_Project.Contact" %>
 
 <!DOCTYPE html>
 <html lang="en">

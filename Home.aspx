@@ -1,7 +1,7 @@
 ﻿ 
 
 
-<%@ Page Title="Home" Language="C#"   AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="db_Project.About" %>
+<%@ Page Title="Home" Language="C#"   AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="db_Project.About" %>
 
 <!DOCTYPE html>
 
@@ -279,7 +279,7 @@ right: 5%;
                                     <a class="nav-link" href="Info.aspx">Update Info</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="premium.aspx">Payment</a>
+                                    <a class="nav-link" href="payment.aspx">Payment</a>
                                 </li>
                                  <li class="nav-item">
      <a class="nav-link" href="adminHome.aspx">Admin</a>
