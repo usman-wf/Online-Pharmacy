@@ -11,7 +11,7 @@ namespace db_Project
 {
 
 
-    public partial class About
+    public partial class Login
     {
 
         /// <summary>

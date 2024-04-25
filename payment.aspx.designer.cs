@@ -11,7 +11,7 @@ namespace db_Project
 {
 
 
-    public partial class premium
+    public partial class payment
     {
     }
 }

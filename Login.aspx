@@ -1,6 +1,6 @@
 ﻿
 
-<%@ Page Title="Login" Language="C#"   AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="db_Project.About" %>
+<%@ Page Title="Login" Language="C#"   AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="db_Project.Login" %>
 
 <!DOCTYPE html>
 
@@ -144,7 +144,7 @@
             </div>
             <div class="content">
                 <div class="checkbox">
-                    <input type="checkbox" id="remember-me">
+                    <input type="checkbox" id="remember-me"/>
                     <label for="remember-me">Remember me</label>
                 </div>
                 <div class="pass-link">
@@ -152,10 +152,11 @@
                 </div>
             </div>
             <div class="field">
-                <asp:Button runat="server" ID="btnLogin" Text="Login" CssClass="btn" />
+                <asp:Button runat="server" ID="btnLogin" Text="Login" CssClass="btn"  OnClick="btnLogin_Click"/>
             </div>
+             
             <div class="signup-link">
-                Not a member? <a href="#">Signup now</a>
+                Not a member? <a href="Register.aspx">Signup now</a>
             </div>
                     
         </form>

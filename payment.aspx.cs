@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace db_Project
 {
-    public partial class premium : System.Web.UI.Page
+    public partial class payment : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

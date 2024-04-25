@@ -1,7 +1,7 @@
 ﻿ 
 
 
-<%@ Page Title="Home" Language="C#"   AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="db_Project.About" %>
+<%@ Page Title="Home" Language="C#"   AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="db_Project.Home" %>
 
 <!DOCTYPE html>
 
@@ -251,6 +251,22 @@ right: 5%;
     display: flex;
 }
 
+.add-to-cart-button {
+    padding: 5px 5px; /* Add padding for a comfortable size */
+    background-color: #28a745; /* A green color for the button */
+    color: white; /* White text on a green background */
+    border: none; /* No border to give a clean look */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor to a pointer on hover */
+    font-size: 16px; /* Slightly larger font for readability */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+/* Hover effect to change the background color */
+.add-to-cart-button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
     </style>
 </head>
  <body>
@@ -302,49 +318,85 @@ right: 5%;
             <h1>Our Products</h1>
             <div class="catalog-container">
                 <div class="product-card">
-                    <img src="images/bp.jpg" alt="Product 000" />
+                    <img src="images/bp.jpg" alt="Product 1" />
                     <h2>BP Operator</h2>
                     <p>Rs.2500</p>
+                      <input type="number" min="1" value="1" id="bp-quantity" />
+                     <!-- Add to Cart button -->
+                     <button  class="add-to-cart-button" onclick="addToCart('BP Operator', 2500, document.getElementById('bp-quantity').value)">Add to Cart</button>
+
                 </div>
                 <div class="product-card">
-                    <img src="images/vitaminC.jpg" alt="Product 00" />
+                    <img src="images/vitaminC.jpg" alt="Product 2" />
                     <h2>vitamin C</h2>
                     <p>Rs.550</p>
+                      <input type="number" min="1" value="1" id="bp-quantity" />
+ <!-- Add to Cart button -->
+ <button   class="add-to-cart-button" onclick="addToCart('BP Operator', 2500, document.getElementById('bp-quantity').value)">Add to Cart</button>
+
                 </div>
                 <div class="product-card">
-                    <img src="images/pediasure.jpg" alt="Product 0" />
+                    <img src="images/pediasure.jpg" alt="Product 3" />
                     <h2>PediaSure</h2>
                     <p>Rs.550</p>
+                      <input type="number" min="1" value="1" id="bp-quantity" />
+ <!-- Add to Cart button -->
+ <button   class="add-to-cart-button" onclick="addToCart('BP Operator', 2500, document.getElementById('bp-quantity').value)">Add to Cart</button>
+
                 </div>
                 <div class="product-card">
-                    <img src="images/Panadol.jpg" alt="Product 1" />
+                    <img src="images/Panadol.jpg" alt="Product 4" />
                     <h2>Panadol</h2>
                     <p>Rs.10</p>
+                      <input type="number" min="1" value="1" id="bp-quantity" />
+ <!-- Add to Cart button -->
+ <button   class="add-to-cart-button" onclick="addToCart('BP Operator', 2500, document.getElementById('bp-quantity').value)">Add to Cart</button>
+
                 </div>
                 <div class="product-card">
-                    <img src="images/Disprin.jpeg.jpg" alt="Product 2" />
+                    <img src="images/Disprin.jpeg.jpg" alt="Product 5" />
                     <h2>Disprin</h2>
                     <p>Rs.20</p>
+                      <input type="number" min="1" value="1" id="bp-quantity" />
+ <!-- Add to Cart button -->
+ <button  class="add-to-cart-button" onclick="addToCart('BP Operator', 2500, document.getElementById('bp-quantity').value)">Add to Cart</button>
+
                 </div>
                 <div class="product-card">
-                    <img src="images/strepsils.jpg" alt="Product 3" />
+                    <img src="images/strepsils.jpg" alt="Product 6" />
                     <h2>Strepsils</h2>
                     <p>Rs.50</p>
+                      <input type="number" min="1" value="1" id="bp-quantity" />
+ <!-- Add to Cart button -->
+ <button   class="add-to-cart-button"  onclick ="addToCart('BP Operator', 2500, document.getElementById('bp-quantity').value)">Add to Cart</button>
+
                 </div>
                 <div class="product-card">
                     <img src="images/Dove soap.jpg" alt="Product 7" />
                     <h2>Dove Soap</h2>
                     <p>Rs.500</p>
+                      <input type="number" min="1" value="1" id="bp-quantity" />
+ <!-- Add to Cart button -->
+ <button  class="add-to-cart-button" onclick ="addToCart('BP Operator', 2500, document.getElementById('bp-quantity').value)">Add to Cart</button>
+
                 </div>
                 <div class="product-card">
                     <img src="images/Johnson's.jpg" alt="Product 8" />
                     <h2>Johnsons Shampoo</h2>
                     <p>Rs.450</p>
+                      <input type="number" min="1" value="1" id="bp-quantity" />
+ <!-- Add to Cart button -->
+ <button    class="add-to-cart-button" onclick="addToCart('BP Operator', 2500, document.getElementById('bp-quantity').value)">Add to Cart</button>
+
                 </div>
                 <div class="product-card">
                     <img src="images/dettol.jpg" alt="Product 9" />
                     <h2>Dettol</h2>
                     <p>Rs.500</p>
+                      <input type="number" min="1" value="1" id="bp-quantity" />
+ <!-- Add to Cart button -->
+ <button   class="add-to-cart-button" onclick="addToCart('BP Operator', 2500, document.getElementById('bp-quantity').value)">Add to Cart</button>
+
                 </div>
             </div>
         
