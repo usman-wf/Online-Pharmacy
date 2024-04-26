@@ -1,6 +1,6 @@
 ﻿
 
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Register.aspx.cs" Inherits="db_Project.Register" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" CodeFile ="Register.aspx.cs" Inherits="db_Project.Register" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -105,7 +105,7 @@
             <div class="form-group">
              </div>
             <div class="field">
-    <asp:Button runat="server" ID="btnLogin" Text="Login" CssClass="btn"  OnClick="btnLogin_Click"/>
+    <asp:Button runat="server" ID="btnRegister" Text="Register" CssClass="btn"  OnClick="btnSignUp_Click"/>
 </div>
         </div>
     </form>

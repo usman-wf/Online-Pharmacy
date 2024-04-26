@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Net;
 using System.ComponentModel;
 
-namespace Railway_Management_System.DAL
+namespace  db_Project.DAL
 {
 
     public class BasePage : System.Web.UI.Page
