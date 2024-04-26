@@ -90,14 +90,15 @@
                 <label for="email">Email:</label>
                 <asp:TextBox ID="email" runat="server" TextMode="Email" Required="true"></asp:TextBox>
             </div>
+             <div class="form-group">
+     <label for="password">Password:</label>
+     <asp:TextBox ID="password" runat="server" TextMode="Password" Required="true"></asp:TextBox>
+ </div>
             <div class="form-group">
                 <label for="phone">Phone Number:</label>
                 <asp:TextBox ID="phone" runat="server" TextMode="Phone" Required="true"></asp:TextBox>
             </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <asp:TextBox ID="password" runat="server" TextMode="Password" Required="true"></asp:TextBox>
-            </div>
+           
             <div class="form-group">
                 <label for="address">Address:</label>
                 <asp:TextBox ID="address" runat="server" TextMode="MultiLine" Rows="3" Required="true"></asp:TextBox>
