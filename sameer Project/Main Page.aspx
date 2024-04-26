@@ -244,6 +244,58 @@ body {
   }
 }
 
+.myGridClass {
+  width: 100%;
+  /*this will be the color of the odd row*/
+  background-color: #fff;
+  margin: 5px 0 10px 0;
+  border: solid 1px #525252;
+  border-collapse:collapse;
+}
+
+/*data elements*/
+.myGridClass td {
+  padding: 2px;
+  border: solid 1px #c1c1c1;
+  color: black;
+}
+
+/*header elements*/
+.myGridClass th {
+  padding: 4px 2px;
+  color: #fff;
+  background: #000000;
+  border-left: solid 1px #525252;
+  font-size: 0.9em;
+}
+
+/*his will be the color of even row*/
+.myGridClass .myAltRowClass { background: #fcfcfc repeat-x top; }
+
+/*and finally, we style the pager on the bottom*/
+.myGridClass .myPagerClass { background: #424242; }
+
+.myGridClass .myPagerClass table { margin: 5px 0; }
+
+.myGridClass .myPagerClass td {
+  border-width: 0;
+  padding: 0 6px;
+  border-left: solid 1px #666;
+  font-weight: bold;
+  color: #fff;
+  line-height: 12px;
+}
+
+.myGridClass .myPagerClass a { color: #666; text-decoration: none; }
+
+.myGridClass .myPagerClass a:hover { color: #000; text-decoration: none; } 
+
+.e-calendar {
+        background-color:darkviolet;
+        color: black;
+}
+
+
 </style>
 </head>
 <body>
@@ -276,48 +328,92 @@ body {
     </div>
 </div>
 
+    <form runat="server">
+     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 <div class="menu">
-        <div class="menu-item">
-            <h2 class="heading" data-view="itinerary">Itinerary</h2>
-            <div id="itinerary-view" class="view">
-               <div class="text-input">
-					<input type="text" id="ArrivalStation" />
-						<label for="input1">Enter Arrival Station</label>
-			</div>
-                <div class="text-input">
-  <input type="text" id="Destination Station" />
-  <label for="input1">Enter Destination Station</label>
-</div>
-                <button class="button-85" role="button">Search</button>
+    <div class="menu-item">
+        <h2 class="heading" data-view="itinerary">Itinerary</h2>
+        <div id="itinerary-view" class="view">
+            <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
+    <ContentTemplate>
+            <div class="text-input">
+                <asp:TextBox ID="ArrivalStation" runat="server"></asp:TextBox>
+                <asp:Label ID="Label1" runat="server" AssociatedControlID="ArrivalStation">Enter Arrival Station</asp:Label>
             </div>
-        </div>
-
-        <div class="menu-item">
-            <h2 class="heading" data-view="purchase-ticket">Purchase Ticket</h2>
-            <div id="purchase-ticket-view" class="view">
-                 <div class="text-input">
-  <input type="text" id="DStation" />
-  <label for="input1">Enter Destination Station</label>
-</div>
-               <button class="button-85" role="button">Purchase</button>
+            <div class="text-input">
+                <asp:TextBox ID="DestinationStation" runat="server"></asp:TextBox>
+                <asp:Label ID="Label2" runat="server" AssociatedControlID="DestinationStation">Enter Destination Station</asp:Label>
             </div>
-        </div>
-
-        <div class="menu-item">
-            <h2 class="heading" data-view="schedule">Schedule</h2>
-            <div id="schedule-view" class="view">
-                 <div class="text-input">
-  <input type="text" id="Start Date" />
-  <label for="input1">Enter Start Date</label>
-</div>
-                 <div class="text-input">
-  <input type="text" id="End Date" />
-  <label for="input1">Enter End Date</label>
-</div>
-               <button class="button-85" role="button">View Schedule</button>
-            </div>
+            <asp:Button ID="SearchButton" runat="server" CssClass="button-85" Text="Search" OnClick="SearchButton_Click" />
+                    <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" CssClass="myGridClass">
+             <Columns>
+        <asp:BoundField DataField="Arrival" HeaderText="Arrival Station" />
+        <asp:BoundField DataField="Destination" HeaderText="Destination Station" />
+        <asp:BoundField DataField="TravelDate" HeaderText="Date" DataFormatString="{0:MM/dd/yyyy}" />
+        <asp:BoundField DataField="TravelTime" HeaderText="Time" />
+        <asp:BoundField DataField="Available_Seats" HeaderText="Available Seats" />
+    </Columns>
+</asp:GridView>
+             </ContentTemplate>
+         </asp:UpdatePanel>
         </div>
     </div>
+
+    <div class="menu-item">
+        <h2 class="heading" data-view="v-ride">View Ride</h2>
+        <div id="v-ride-view" class="view">
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+            <div class="text-input">
+                <asp:TextBox ID="Destination_Station" runat="server"></asp:TextBox>
+                <asp:Label ID="Label3" runat="server" AssociatedControlID="Destination_Station">Enter Destination Station</asp:Label>
+            </div>
+            <asp:Button ID="PurchaseButton" runat="server" CssClass="button-85" Text="View" OnClick="ViewButton_Click" />
+            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" CssClass="myGridClass">
+             <Columns>
+        <asp:BoundField DataField="Arrival" HeaderText="Arrival Station" />
+        <asp:BoundField DataField="Destination" HeaderText="Destination Station" />
+        <asp:BoundField DataField="TravelDate" HeaderText="Date" DataFormatString="{0:MM/dd/yyyy}" />
+        <asp:BoundField DataField="TravelTime" HeaderText="Time" />
+        <asp:BoundField DataField="Available_Seats" HeaderText="Available Seats" />
+    </Columns>
+</asp:GridView>
+             </ContentTemplate>
+         </asp:UpdatePanel>
+ </div>
+    </div>
+
+    <div class="menu-item">
+        <h2 class="heading" data-view="schedule">Schedule</h2>
+        <div id="schedule-view" class="view">
+            <asp:UpdatePanel ID="ScheduleUpdatePanel" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+            <div class="text-input">
+                <asp:Label ID="Label4" runat="server" Text="Select Start Date"></asp:Label>
+                <asp:Calendar ID="StartDateCalendar" runat="server" CssClass="e-calendar" OnSelectionChanged="StartDateCalendar_SelectionChanged"></asp:Calendar>
+            </div>
+            <div class="text-input">
+                <asp:Label ID="Label5" runat="server" Text="Select End Date"></asp:Label>
+                <asp:Calendar ID="EndDateCalendar" runat="server" CssClass="e-calendar" OnSelectionChanged="EndDateCalendar_SelectionChanged"></asp:Calendar>
+            </div>
+            <asp:Button ID="ViewScheduleButton" runat="server" CssClass="button-85" Text="View Schedule" OnClick="ViewScheduleButton_Click" />
+             <div>
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CssClass="myGridClass">
+         <Columns>
+             <asp:BoundField DataField="Arrival" HeaderText="Arrival Station" />
+             <asp:BoundField DataField="Destination" HeaderText="Destination Station" />
+             <asp:BoundField DataField="TravelDate" HeaderText="Departure Date" DataFormatString="{0:MM/dd/yyyy}" />
+             <asp:BoundField DataField="TravelTime" HeaderText="Travel Time" />
+             <asp:BoundField DataField="Available_Seats" HeaderText="Available Seats" />
+         </Columns>
+     </asp:GridView>
+        </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+        </div>
+    </div>
+    </div>
+</form>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
