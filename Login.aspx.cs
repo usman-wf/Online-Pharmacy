@@ -22,30 +22,89 @@ namespace db_Project
         }
 
 
+        //protected void btnLogin_Click(object sender, EventArgs e)
+        //{
+        //    // Retrieve the values from the form
+        //    string email = txtEmail?.Text.Trim();
+        //    string password = txtPassword?.Text.Trim();
+
+        //    // Basic validation
+        //    if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+        //    {
+        //        Response.Write("<script>alert('Email and Password are required.');</script>");
+        //        return;
+        //    }
+
+        //    // Your database connection and login logic here
+        //    string connectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+
+        //    using (SqlConnection conn = new SqlConnection(connectionString))
+        //    {
+        //        try
+        //        {
+        //            conn.Open(); // Open database connection
+
+        //            // Define the SQL query to check the user based on email, password, and role
+        //            string query = "SELECT * FROM userInfo WHERE Email = @Email AND Password = @Password";
+
+        //            using (SqlCommand cmd = new SqlCommand(query, conn))
+        //            {
+        //                // Use SQL parameters to avoid injection
+        //                cmd.Parameters.AddWithValue("@Email", email);
+        //                cmd.Parameters.AddWithValue("@Password", password);
+
+        //                using (SqlDataReader reader = cmd.ExecuteReader())
+        //                {
+        //                    if (reader.HasRows)
+        //                    {
+        //                        // Successful login - redirect to the desired page
+        //                        Response.Redirect("Home.aspx");
+        //                    }
+        //                    else
+        //                    {
+        //                        // Invalid credentials - show an error message
+        //                        Response.Write("<script>alert('Invalid email, password');</script>");
+        //                    }
+        //                }
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            // Handle database connection errors
+        //            Response.Write("<script>alert('An error occurred. Please try again.');</script>");
+        //            Console.WriteLine("Error: " + ex.Message);
+        //        }
+        //    }
+
+        //}
+
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            // Retrieve the values from the form
+            // Retrieve the form values
             string email = txtEmail?.Text.Trim();
             string password = txtPassword?.Text.Trim();
+            string role = rblRole.SelectedValue;  // Get the selected role
 
             // Basic validation
-            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(role))
             {
                 Response.Write("<script>alert('Email and Password are required.');</script>");
                 return;
             }
 
-            // Your database connection and login logic here
+            // Connection string (assuming it’s set in the configuration file)
             string connectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 try
                 {
-                    conn.Open(); // Open database connection
+                    conn.Open();  // Open database connection
 
-                    // Define the SQL query to check the user based on email, password, and role
-                    string query = "SELECT * FROM userInfo WHERE Email = @Email AND Password = @Password";
+                    // SQL query for role-based login
+                    string query = role == "Admin"
+                        ? "SELECT * FROM Admin WHERE Email = @Email AND Password = @Password"
+                        : "SELECT * FROM userInfo WHERE Email = @Email AND Password = @Password";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -57,27 +116,32 @@ namespace db_Project
                         {
                             if (reader.HasRows)
                             {
-                                // Successful login - redirect to the desired page
-                                Response.Redirect("Home.aspx");
+                                // Successful login - redirect to the appropriate page based on role
+                                if (role == "Admin")
+                                {
+                                    Response.Redirect("adminHome.aspx");
+                                }
+                                else
+                                {
+                                    Response.Redirect("Home.aspx");
+                                }
                             }
                             else
                             {
                                 // Invalid credentials - show an error message
-                                Response.Write("<script>alert('Invalid email, password');</script>");
+                                Response.Write("<script>alert('Invalid email or password');</script>");
                             }
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    // Handle database connection errors
+                    // Handle errors in database operations
                     Response.Write("<script>alert('An error occurred. Please try again.');</script>");
-                    Console.WriteLine("Error: " + ex.Message);
+                    Console.WriteLine("Error: " + ex.Message);  // Log the error
                 }
             }
-
         }
-
 
 
     }

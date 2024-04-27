@@ -86,23 +86,37 @@
 --ALTER COLUMN phoneNo VARCHAR(12);
 
 
--- INSERT INTO Admin (adminId, FName, LName, address, phoneNo, email)
---VALUES
---    (1, 'Usman', 'Wasif', '123  ABC Road', 123, 'usman.wf@example.com'),  -- First Admin
---    (3, 'Umer', 'Daud', '456 XYZ road', 9876543210, 'umer.daud@example.com'),  -- Second Admin
---    (4, 'Abdul', 'Rafay', '789 AAA St', 1231231234, 'rafay@example.com'); 
-
+-- insert into admin (adminid, fname, lname, address, phoneno, email)
+--values
+--    (1, 'usman', 'wasif', '123  abc road', 123, 'usman.wf@example.com'),  -- first admin
+--    (3, 'umer', 'daud', '456 xyz road', 9876543210, 'umer.daud@example.com'),  -- second admin
+--    (4, 'abdul', 'rafay', '789 aaa st', 1231231234, 'rafay@example.com'); 
+-- (2, 'usman', 'butt', '123  abc road', 123, 'usmanbutt9164@example.com'),  -- first admin
  
+ UPDATE Admin
+SET 
+    [password] = 'secure'  -- New password for adminId 1
+WHERE 
+    adminId = 1;
 
+    UPDATE Admin
+SET
+    [password] = 'sectMe'  -- New password for adminId 3
+WHERE 
+    adminId = 2;
+
+UPDATE Admin
+SET 
+    [password] = 'heavy'  -- New password for adminId 3
+WHERE 
+    adminId = 3;
+
+UPDATE Admin
+SET 
+    [password] = 'high'  -- New password for adminId 4
+WHERE 
+    adminId = 4;
   
-
- SELECT * FROM Cart;
-SELECT * FROM [Order]; -- Brackets because 'Order' is a reserved word
-SELECT * FROM Customer;
-SELECT * FROM userInfo;
-SELECT * FROM inventory;
-SELECT * FROM [Admin];
-SELECT * FROM branch;
 
 ---- Insert rows into the Inventory table
 --INSERT INTO Inventory (medicineId, name, description, price, manufactureDate, expiryDate, stockLeft, adminId)
@@ -147,3 +161,17 @@ SELECT * FROM branch;
 --    (1, 450.00, 0),  -- Order 1, not yet received
 --    (2, 900.00, 1),  -- Order 2, received
 --    (3, 140.00, 0); 
+
+
+--alter table admin
+--add password varchar(10);
+
+
+
+ SELECT * FROM Cart;
+SELECT * FROM [Order]; -- Brackets because 'Order' is a reserved word
+SELECT * FROM Customer;
+SELECT * FROM userInfo;
+SELECT * FROM inventory;
+SELECT * FROM [Admin];
+SELECT * FROM branch;
