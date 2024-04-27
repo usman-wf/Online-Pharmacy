@@ -121,6 +121,27 @@
         color: #4158d0;
         text-decoration: none;
     }
+    /*.radio-buttons-list {
+    display: inline-flex;*/ /* Ensure inline layout with flexbox */
+    /*justify-content: flex-start;*/ /* Align buttons to the start */
+    /*gap: 20px;*/ /* Create space between the radio buttons */
+    /*padding-top: 5px;*/ /* Optional: add padding to increase vertical spacing */
+/*}*/
+.radio-buttons-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.radio-buttons-list input {
+    margin-right: 10px;
+}
+
+.radio-buttons-list label {
+    color: black; /* Ensure text is visible */
+    display: inline; /* Keep labels visible */
+    vertical-align: middle;
+}
     </style>
 </head>
 <body>
@@ -129,10 +150,16 @@
         <div class="title">Login To Account</div>
         <form runat="server">
                 <div class="field">
-            <asp:RadioButtonList runat="server" ID="rblRole" RepeatDirection="Horizontal">
-                <asp:ListItem Text="Admin" Value="Admin" />
-                <asp:ListItem Text="Customer" Value="Customer" />
-            </asp:RadioButtonList>
+   <asp:RadioButtonList
+    runat="server"
+    ID="rblRole"
+    RepeatDirection="Vertical"
+    CssClass="radio-buttons-list">
+    <asp:ListItem Text="Admin" Value="Admin" /> 
+      
+    <asp:ListItem Text="Customer" Value="Customer" />
+</asp:RadioButtonList>
+
         </div>
             <div class="field">
                 <asp:TextBox runat="server" ID="txtEmail" placeholder="Email" required="required"></asp:TextBox>
@@ -142,15 +169,7 @@
                 <asp:TextBox runat="server" ID="txtPassword" TextMode="Password" required="required" placeholder="Password"></asp:TextBox>
                 <label>Password</label>
             </div>
-            <div class="content">
-                <div class="checkbox">
-                    <input type="checkbox" id="remember-me"/>
-                    <label for="remember-me">Remember me</label>
-                </div>
-                <div class="pass-link">
-                    <a href="#">Forgot password?</a>
-                </div>
-            </div>
+            
             <div class="field">
                 <asp:Button runat="server" ID="btnLogin" Text="Login" CssClass="btn"  OnClick="btnLogin_Click"/>
             </div>

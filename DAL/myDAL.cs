@@ -61,7 +61,6 @@ namespace  db_Project.DAL
         {
             instance.FirstName = fn;
             instance.LastName = ln;
-            instance.FullName = fn + " " + ln;
             instance.ID = id;
         }
 

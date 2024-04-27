@@ -1,13 +1,15 @@
-﻿using db_Project.DAL;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-//using db_Project.DAL;
+using db_Project.DAL;
+using System.Configuration;
+using System.Data.SqlClient;
+
+using System.Net;
+using System.Drawing;
 
 namespace db_Project
 {
@@ -18,44 +20,68 @@ namespace db_Project
         {
 
         }
+
+
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            string email = txtEmail.Text;
-            string password = txtPassword.Text;
+            // Retrieve the values from the form
+            string email = txtEmail?.Text.Trim();
+            string password = txtPassword?.Text.Trim();
 
-            // Use ConfigurationManager to get the connection string from web.config
-            string connectionString = ConfigurationManager.ConnectionStrings["sqlCon1"].ConnectionString;
-
-            using (SqlConnection con = new SqlConnection(connectionString))
+            // Basic validation
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
-                con.Open();
-                string query = "SELECT COUNT(*) FROM Traveller WHERE Email = @Email AND Password = @Password";
-                SqlCommand cmd = new SqlCommand(query, con);
-                cmd.Parameters.AddWithValue("@Email", email);
-                cmd.Parameters.AddWithValue("@Password", password);
-                int count = (int)cmd.ExecuteScalar();
+                Response.Write("<script>alert('Email and Password are required.');</script>");
+                return;
+            }
 
-                if (count > 0)
+            // Your database connection and login logic here
+            string connectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                try
                 {
-                    string q = "SELECT ID , FName , LName FROM Traveller WHERE Email = @Email";
-                    SqlCommand com = new SqlCommand(q, con);
-                    com.Parameters.AddWithValue("@Email", email);
-                    SqlDataReader reader = com.ExecuteReader();
-                    if (reader.Read())
+                    conn.Open(); // Open database connection
+
+                    // Define the SQL query to check the user based on email, password, and role
+                    string query = "SELECT * FROM userInfo WHERE Email = @Email AND Password = @Password";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        string fn = reader["FName"].ToString();
-                        string ln = reader["LName"].ToString();
-                        int id = Convert.ToInt32(reader["ID"].ToString());
-                        Users.UpdateUser(id, fn, ln);
+                        // Use SQL parameters to avoid injection
+                        cmd.Parameters.AddWithValue("@Email", email);
+                        cmd.Parameters.AddWithValue("@Password", password);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                // Successful login - redirect to the desired page
+                                Response.Redirect("Home.aspx");
+                            }
+                            else
+                            {
+                                // Invalid credentials - show an error message
+                                Response.Write("<script>alert('Invalid email, password');</script>");
+                            }
+                        }
                     }
-                    Response.Redirect("Main Page.aspx");
                 }
-                else
+                catch (Exception ex)
                 {
-                    // Display error message
-                   // lblMessage.Text = "Invalid email or password. Please try again.";
+                    // Handle database connection errors
+                    Response.Write("<script>alert('An error occurred. Please try again.');</script>");
+                    Console.WriteLine("Error: " + ex.Message);
                 }
             }
+
         }
+
+
+
     }
 }
+
+
+ 
