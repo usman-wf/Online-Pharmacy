@@ -9,63 +9,73 @@
     <title>Update Info</title>
     <style>
         .container {
-            width: 80%;
-            margin: 0 auto;
-            text-align: center;
-        }
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
 
-        .formgroup {
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-start; /* Changed from 'space-between' to 'flex-start' */
+    align-items: center;
+}
 
-        label {
-            flex: 1;
-            text-align: right;
-            padding-right: 10px;
-            font-weight: bold;
-        }
+label {
+    flex: 1;
+    text-align: right;
+    padding-right: 10px;
+    font-weight: bold;
+}
 
-        input,
-        textarea,
-        select {
-            flex: 3;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-            transition: all 0.3s ease;
-        }
+input,
+textarea,
+select {
+    flex: 3;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
 
-        input[type="number"],
-        input[type="date"],
-        input[type="tel"],
-        input[type="radio"],
-        input[type="checkbox"] {
-            width: auto;
-        }
+input[type="number"],
+input[type="date"],
+input[type="tel"],
+input[type="radio"],
+input[type="checkbox"] {
+    width: auto; /* Keeps specific types of inputs from stretching */
+}
 
-        input:hover,
-        textarea:hover,
-        select:hover {
-            border-color: #007bff;
-        }
+input:hover,
+textarea:hover,
+select:hover {
+    border-color: #007bff;
+}
 
-        button.btn {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+button.btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 
-        button.btn:hover {
-            background-color: #005bb5;
-        }
+button.btn:hover {
+    background-color: #005bb5;
+}
+
+/* Additional styling for the container, heading, and button field */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.field {
+    text-align: center;
+}
     </style>
 </head>
 
@@ -73,43 +83,36 @@
     <form runat="server">
         <div class="container">
             <h1>Update Information</h1>
-            <div class="formgroup">
-                <label for="firstName">First Name</label>
-                <input type="text" name="firstName" id="firstName" placeholder="Enter First Name"  />
+                        <div class="form-group">
+                <label for="firstname">First Name:</label>
+                <asp:TextBox ID="firstname" runat="server" Required="true"></asp:TextBox>
             </div>
-            <div class="formgroup">
-                <label for="lastName">Last Name</label>
-                <input type="text" name="lastName" id="lastName" placeholder="Enter Last Name" />
+            <div class="form-group">
+                <label for="lastname">Last Name:</label>
+                <asp:TextBox ID="lastname" runat="server" Required="true"></asp:TextBox>
             </div>
-            <div class="formgroup">
-                <label for="phoneNum">Phone Number</label>
-                <input type="tel" name="phoneNum" id="phoneNum" placeholder="Enter Number" />
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <asp:TextBox ID="email" runat="server" TextMode="Email" Required="true"></asp:TextBox>
             </div>
-            <div class="formgroup">
-                <label for="age">Age</label>
-                <input type="number" name="age" id="age" placeholder="Enter Age" />
+             <div class="form-group">
+     <label for="password">Password:</label>
+     <asp:TextBox ID="password" runat="server" TextMode="Password" Required="true"></asp:TextBox>
+ </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <asp:TextBox ID="phone" runat="server" TextMode="Phone" Required="true"></asp:TextBox>
             </div>
-            <div class="formgroup">
-                <label for="dob">Date of Birth</label>
-                <input type="date" name="dob" id="dob" placeholder="Enter Date of Birth" />
+           
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <asp:TextBox ID="address" runat="server" TextMode="MultiLine" Rows="3" Required="true"></asp:TextBox>
             </div>
-            <div class="formgroup">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Enter Email" />
-            </div>
-            <div class="formgroup">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" placeholder="Enter Password" />
-            </div>
-            <div class="formgroup">
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username" placeholder="Enter Username" />
-            </div>
-            <div class="formgroup">
-                <label for="address">Address</label>
-                <textarea name="address" id="address" placeholder="Enter Address" ></textarea>
-            </div>
-            <button type="submit" class="btn" id="submit">Submit</button>
+            <div class="form-group">
+             </div>
+            <div class="field">
+    <asp:Button runat="server" ID="btnRegister" Text="Register" CssClass="btn"  OnClick="btnSignUp_Click"/>
+</div>
         </div>
     </form>
 </body>

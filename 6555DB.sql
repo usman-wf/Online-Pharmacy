@@ -1,177 +1,156 @@
-﻿ 
-
-
-
-
---CREATE TABLE Cart (
---    cartId INT PRIMARY KEY,
---    totalItems INT,
---    grossAmount FLOAT,
---    discount FLOAT,
---    netAmount FLOAT,
---    paymentMethod CHAR(10)
+﻿--create table Cart(
+--cartId int primary key,
+--totalItems int,
+--grossAmount float,
+--discount float,
+--netAmount float,
+--paymentMethod char(10) not null
 --);
 
----- Table Order
---CREATE TABLE [Order] (
---    orderId INT PRIMARY KEY,
---    amountPaid FLOAT,
---    receivedStatus BIT
+--create table Orders (
+--orderId int primary key,
+--amountPaid float,
+--orderTime date,
+--recievedStatus bit not null
 --);
 
 
+--create table userInfo (
+--id INT primary KEY,
+--Fname char(10) NOT NULL,
+--Lname char(10),
+--dateOfBirth date NOT NULL,
+--gender char(10) NOT NULL,
+--address varchar(30) NOT NULL,
+--paymentInfo varchar(20) NOT NULL,
+--phoneNo varchar(12) NOT NULL,
+--email varchar(30) NOT NUll
+--);
 
---CREATE TABLE UserInfo (
---    id INT IDENTITY(1, 1) PRIMARY KEY,
---    FName CHAR(10),
---    LName CHAR(10),
---    address CHAR(50),
---    phoneNo varchar(12),
---    email VARCHAR(30),
---   [password] varchar(10)
+--create table Customer (
+--customerId INT,
+--isPremium bit,
+--hasYearlyPackage bit,
+--cartID int, 
+--orderID int,
+--PRIMARY KEY (cartID, orderID),
+--foreign key (customerId) references userInfo(id)
+--);
+
+--create table Admin (
+--adminId int primary key,
+--Fname char(10) NOT NULL,
+--Lname char(10),
+--phoneNo varchar(12) NOT NULL,
+--email varchar(30) NOT NUll
+--);
+
+--create table Inventory (
+--medicineId int primary key,
+--name varchar(30) not null,
+--description varchar(50),
+--price float not null,
+--manufactureDate date not null,
+--expiryDate date not null,
+--stockQuantity int,
+--adminID int,
+--FOREIGN KEY (adminID) REFERENCES Admin(adminId)
+--);
+
+--create table branch (
+--branchId int primary key,
+--location char(20),
+--adminID int,
+--medicineID int,
+--FOREIGN KEY (adminID) REFERENCES Admin(adminId),
+--FOREIGN KEY (medicineID) REFERENCES Inventory(medicineId)
 --);
 
 
---CREATE TABLE Customer (
---    customerId INT,
---    FName CHAR(10),
---    LName CHAR(10),
---    paymentMethod CHAR(10),
---    isPremium BIT,
---    yearlyPkg BIT,
---    cartId INT,
---    orderId INT,
---    CONSTRAINT FK_Customer_UserInfo FOREIGN KEY (customerId) REFERENCES UserInfo(id),
---    CONSTRAINT FK_Customer_Cart FOREIGN KEY (cartId) REFERENCES Cart(cartId),
---    CONSTRAINT FK_Customer_Order FOREIGN KEY (orderId) REFERENCES Order(orderId),
---    CONSTRAINT PK_Customer_Composite PRIMARY KEY (cartId, orderId),
---    CONSTRAINT UQ_Customer_CustomerId UNIQUE (customerId)
+--create table review (
+--reviewId int primary key,
+--medicineID int,
+--customerID int,
+--reviewDetail char(50),
+--FOREIGN KEY (medicineID) REFERENCES inventory(medicineId),
+--FOREIGN KEY (customerID) REFERENCES userInfo(id)
 --);
 
 
---- Table Admin
---CREATE TABLE Admin (
---    adminId INT PRIMARY KEY,
---    CONSTRAINT FK_Admin_UserInfo FOREIGN KEY (adminId) REFERENCES UserInfo(id)
---);
+--select * from Customer
+--select * from userInfo
+--select * from Admin
+--select * from Inventory
+--select * from Cart
+--select * from Orders
 
-
-
-
---CREATE TABLE Inventory (
---    medicineId INT,
---    name VARCHAR(25),
---    description VARCHAR(50),
---    price FLOAT,
---    manufactureDate DATE,
---    expiryDate DATE,
---    stockLeft INT,
---    adminId INT,
---    PRIMARY KEY (medicineId, adminId),
---    CONSTRAINT FK_Inventory_Admin FOREIGN KEY (adminId) REFERENCES Admin(adminId)
---);
-
-
---CREATE TABLE Branch (
---    id INT,
---    location CHAR(20),
---    adminId INT,
---    medicineId INT,
---    PRIMARY KEY (id, adminId, medicineId),
---    CONSTRAINT FK_Branch_Admin FOREIGN KEY (adminId) REFERENCES Admin(adminId),
---    CONSTRAINT FK_Branch_Inventory FOREIGN KEY (medicineId, adminId) REFERENCES Inventory(medicineId, adminId)
---);
- 
--- ALTER TABLE Admin
---ALTER COLUMN phoneNo VARCHAR(12);
-
-
--- insert into admin (adminid, fname, lname, address, phoneno, email)
---values
---    (1, 'usman', 'wasif', '123  abc road', 123, 'usman.wf@example.com'),  -- first admin
---    (3, 'umer', 'daud', '456 xyz road', 9876543210, 'umer.daud@example.com'),  -- second admin
---    (4, 'abdul', 'rafay', '789 aaa st', 1231231234, 'rafay@example.com'); 
--- (2, 'usman', 'butt', '123  abc road', 123, 'usmanbutt9164@example.com'),  -- first admin
- 
- UPDATE Admin
-SET 
-    [password] = 'secure'  -- New password for adminId 1
-WHERE 
-    adminId = 1;
-
-    UPDATE Admin
-SET
-    [password] = 'sectMe'  -- New password for adminId 3
-WHERE 
-    adminId = 2;
-
-UPDATE Admin
-SET 
-    [password] = 'heavy'  -- New password for adminId 3
-WHERE 
-    adminId = 3;
-
-UPDATE Admin
-SET 
-    [password] = 'high'  -- New password for adminId 4
-WHERE 
-    adminId = 4;
-  
-
----- Insert rows into the Inventory table
---INSERT INTO Inventory (medicineId, name, description, price, manufactureDate, expiryDate, stockLeft, adminId)
+---- Insert into userInfo
+--INSERT INTO userInfo (id, Fname, Lname, dateOfBirth, gender, address, paymentInfo, phoneNo, email)
 --VALUES 
---    (101, 'Paracetamol', 'Pain relief and fever reducer', 10.00, '2023-01-01', '2025-01-01', 500, 1),  -- Managed by Admin 1
---    (102, 'Ibuprofen', 'Anti-inflammatory drug', 15.00, '2022-10-01', '2024-10-01', 300, 3),  -- Managed by Admin 3
---    (103, 'Amoxicillin', 'Antibiotic', 25.00, '2023-03-01', '2024-12-31', 200, 4);  -- Managed by Admin 4
+--(1, 'Ali', 'Khan', '1995-06-10', 'Male', 'Lahore, Pakistan', 'Credit Card', 3001234567, 'ali.khan@example.com'),
+--(2, 'Ayesha', 'Malik', '1998-02-20', 'Female', 'Karachi, Pakistan', 'Debit Card', 3002345678, 'ayesha.malik@example.com'),
+--(3, 'Usman', 'Sheikh', '1989-12-15', 'Male', 'Islamabad, Pakistan', 'Cash', 3003456789, 'usman.sheikh@example.com'),
+--(4, 'Sana', 'Javed', '1992-08-05', 'Female', 'Faisalabad, Pakistan', 'Credit Card', 3004567890, 'sana.javed@example.com'),
+--(5, 'Rizwan', 'Ahmed', '2000-01-30', 'Male', 'Rawalpindi, Pakistan', 'Cash', 3005678901, 'rizwan.ahmed@example.com');
 
-
---INSERT INTO Branch (id, location, adminId, medicineId)
+---- Insert into Cart
+--INSERT INTO Cart (cartId, totalItems, grossAmount, discount, netAmount, paymentMethod)
 --VALUES 
---    (1, 'Lahore', 1, 101),  -- Lahore branch managed by Admin 1, stocks Paracetamol
---    (2, 'Karachi', 3, 102),  -- Karachi branch managed by Admin 3, stocks Ibuprofen
---    (3, 'Islamabad', 4, 103);  
+--(1, 10, 5000, 500, 4500, 'Credit'),
+--(2, 5, 2500, 200, 2300, 'Debit'),
+--(3, 7, 3500, 350, 3150, 'Cash'),
+--(4, 15, 7500, 750, 6750, 'Credit'),
+--(5, 3, 1500, 100, 1400, 'Cash');
 
+---- Insert into Orders
+--INSERT INTO Orders (orderId, amountPaid, orderTime, recievedStatus)
+--VALUES 
+--(1, 4500, '2024-04-25', 1),
+--(2, 2300, '2024-04-26', 1),
+--(3, 3150, '2024-04-27', 0),
+--(4, 6750, '2024-04-28', 1),
+--(5, 1400, '2024-04-29', 0);
 
----- Insert into the UserInfo table
---INSERT INTO UserInfo (FName, LName, address, phoneNo, email, [password])
+---- Insert into Customer
+--INSERT INTO Customer (customerId, isPremium, hasYearlyPackage, cartID, orderID)
+--VALUES 
+--(1, 1, 0, 1, 1),
+--(2, 0, 1, 2, 2),
+--(3, 1, 1, 3, 3),
+--(4, 0, 0, 4, 4),
+--(5, 1, 0, 5, 5);
+
+---- Insert into Admin
+--INSERT INTO Admin (adminId, Fname, Lname, gender, phoneNo, email)
+--VALUES 
+--(1, 'Zain', 'Ali', 'Male', 3006789012, 'zain.ali@example.com'),
+--(2, 'Fatima', 'Rashid', 'Female', 3007890123, 'fatima.rashid@example.com'),
+--(3, 'Hamza', 'Qureshi', 'Male', 3008901234, 'hamza.qureshi@example.com'),
+--(4, 'Sara', 'Kazmi', 'Female', 3009012345, 'sara.kazmi@example.com'),
+--(5, 'Ahmed', 'Ali', 'Male', 3000123456, 'ahmed.ali@example.com');
+
+---- Insert into Inventory
+--INSERT INTO Inventory (medicineId, name, description, price, manufactureDate, expiryDate, stockQuantity, adminID)
+--VALUES 
+--(1, 'Panadol', 'Painkiller', 50, '2024-01-01', '2026-01-01', 500, 1),
+--(2, 'Brufen', 'Anti-inflammatory', 60, '2024-02-01', '2026-02-01', 400, 2),
+--(3, 'Cough Syrup', 'Cough Relief', 70, '2024-03-01', '2026-03-01', 300, 3),
+--(4, 'Antibiotic', 'Infection Treatment', 100, '2024-04-01', '2026-04-01', 200, 4),
+--(5, 'Antacid', 'Acid Reflux Relief', 90, '2024-05-01', '2026-05-01', 100, 5);
+
+---- Insert into branch
+--INSERT INTO branch (branchId, location, adminID, medicineID)
+--VALUES 
+--(1, 'Lahore', 1, 1),
+--(2, 'Karachi', 2, 2),
+--(3, 'Islamabad', 3, 3),
+--(4, 'Faisalabad', 4, 4),
+--(5, 'Rawalpindi', 5, 5);
+
+--INSERT INTO review (reviewId, medicineID, customerID, reviewDetail)
 --VALUES
---    ('Ali', 'Khan', '123 Main St', '03001234567', 'ali.khan@example.com', 'pass'),  -- User 1
---    ('Zara', 'Sheikh', '456 Canal Rd', '03111234567', 'zara.sheikh@example.com', 'securepwd'),  -- User 2
---    ('Ahmed', 'Raza', '789 Model Town', '03211234567', 'ahmed.raza@example.com', 'raza2023');  -- User 3
-
-
----- Insert into the Customer table with NULL foreign keys
---INSERT INTO Customer (customerId, FName, LName, paymentMethod, isPremium, yearlyPkg, cartId, orderId)
---VALUES
---    (4, 'Ali', 'Khan', 'Cash', 0, 0, 1, 1),  -- No references to Cart or Order
---    (5, 'Zara', 'Sheikh', 'Credit', 1, 1, 2, 2),  -- No references to Cart or Order
---    (6, 'Ahmed', 'Raza', 'Debit', 0, 1, 3,3 );  -- No references to Cart or Order
-
-
---    INSERT INTO Cart (cartId, totalItems, grossAmount, discount, netAmount, paymentMethod)
---VALUES
---    (1, 5, 500.00, 50.00, 450.00, 'Cash'),  -- Cart 1
---    (2, 10, 1000.00, 100.00, 900.00, 'Credit'),  -- Cart 2
---    (3, 3, 150.00, 10.00, 140.00, 'Debit'); 
-
-
---    INSERT INTO [Order] (orderId, amountPaid, receivedStatus)
---VALUES
---    (1, 450.00, 0),  -- Order 1, not yet received
---    (2, 900.00, 1),  -- Order 2, received
---    (3, 140.00, 0); 
-
-
---alter table admin
---add password varchar(10);
-
-
-
- SELECT * FROM Cart;
-SELECT * FROM [Order]; -- Brackets because 'Order' is a reserved word
-SELECT * FROM Customer;
-SELECT * FROM userInfo;
-SELECT * FROM inventory;
-SELECT * FROM [Admin];
-SELECT * FROM branch;
+--(1, 1, 1, 'Very effective, no side effects'),
+--(2, 2, 2, 'Works well, slight dizziness'),
+--(3, 3, 3, 'Tastes bad but works fine'),
+--(4, 4, 4, 'Caused nausea, not recommended'),
+--(5, 5, 5, 'Helped with acid reflux, recommended');
