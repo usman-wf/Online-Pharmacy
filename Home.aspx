@@ -432,5 +432,4 @@ You can order online medicines, health products, lab test services,online doctor
   
 </body>
 
-</body>
 </html>

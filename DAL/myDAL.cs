@@ -6,7 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Net;
 using System.ComponentModel;
-
+using db_Project.DAL;
 namespace  db_Project.DAL
 {
 
@@ -28,7 +28,7 @@ namespace  db_Project.DAL
     }
     public class myDAL
     {
-        private static readonly string connString = System.Configuration.ConfigurationManager.ConnectionStrings["sqlCon1"].ConnectionString;
+        private static readonly string connString = System.Configuration.ConfigurationManager.ConnectionStrings["con"].ConnectionString;
     }
 
     public class Users
@@ -36,13 +36,12 @@ namespace  db_Project.DAL
         private static Users instance;
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
-        public string FullName { get; private set; }
-        public int ID { get; private set; }
+         public int ID { get; private set; }
         public Users()
         {
             FirstName = "";
             LastName = "";
-            FullName = "";
+           
             ID = -1;
         }
 
@@ -78,7 +77,7 @@ namespace  db_Project.DAL
         }
         public static void Logout()
         {
-            instance.FirstName = instance.LastName = instance.FullName = "";
+            instance.FirstName = instance.LastName  = "";
             Instance.ID = -1;
         }
     }

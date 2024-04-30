@@ -111,7 +111,7 @@ h1 {
             <div class="form-group">
              </div>
             <div class="field">
-    <asp:Button runat="server" ID="btnRegister" Text="Register" CssClass="btn"  OnClick="btnSignUp_Click"/>
+    <asp:Button runat="server" ID="btnRegister" Text="Register" CssClass="btn"  OnClick="btnUpdateClick"/>
 </div>
         </div>
     </form>

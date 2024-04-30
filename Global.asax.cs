@@ -6,6 +6,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
+using db_Project.DAL;
 
 namespace db_Project
 {
@@ -16,6 +17,7 @@ namespace db_Project
             // Code that runs on application startup
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            var userInstance = Users.Instance;
         }
     }
 }
