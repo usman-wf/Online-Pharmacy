@@ -9,7 +9,7 @@ using db_Project.DAL;
 
 namespace db_Project
 {
-    public partial class Home : Page
+    public partial class Home : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -19,13 +19,13 @@ namespace db_Project
 
 
         protected void btnSearchClick(object sender, EventArgs e)
-        {
-            // string searchTerm = searchInput;
-            // if (string.IsNullOrEmpty(searchTerm))
-            // {
+        { 
+             string searchTerm = searchInput.Text;
+             if (string.IsNullOrEmpty(searchTerm))
+             {
             ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Please enter a search term!');", true);
             return;
-            // }
+             }
             // Assuming you have a connection string named "con" in your Web.config
             string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["con"].ConnectionString;
             // Define your SQL query to check if the item exists in stock
@@ -38,7 +38,7 @@ namespace db_Project
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         // Add parameters to prevent SQL injection
-                        // command.Parameters.AddWithValue("@searchTerm", searchTerm);
+                        command.Parameters.AddWithValue("@searchTerm", searchTerm);
                         connection.Open();
                         // Execute the query
                         int count = Convert.ToInt32(command.ExecuteScalar());
@@ -46,7 +46,7 @@ namespace db_Project
                         if (count > 0)
                         {
                             // Redirect to search.aspx passing the search term as a query string parameter
-                            //  Response.Redirect($"search.aspx?searchTerm={searchTerm}");
+                             Response.Redirect("search.aspx");
                         }
                         else
                         {
@@ -65,4 +65,4 @@ namespace db_Project
 
     }
 
-}
+}            

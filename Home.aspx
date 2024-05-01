@@ -473,7 +473,7 @@ You can order online medicines, health products, lab test services,online doctor
         <div class="back">
             <h1>Our Products</h1>
             <div class="catalog-container">
-                <div class="product-card">
+                <div class="product-card" id="bp operator">
                     <img src="images/bp.jpg" alt="Product 1" />
                     <h2>BP Operator</h2>
                     <p>Rs.2500</p>
