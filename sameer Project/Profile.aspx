@@ -90,6 +90,53 @@
   cursor: pointer;
 }
 
+
+    .myGridClass {
+  width: 100%;
+  /*this will be the color of the odd row*/
+  background-color: #fff;
+  margin: 5px 0 10px 0;
+  border: solid 1px #525252;
+  border-collapse:collapse;
+}
+
+/*data elements*/
+.myGridClass td {
+  padding: 2px;
+  border: solid 1px #c1c1c1;
+  color: black;
+}
+
+/*header elements*/
+.myGridClass th {
+  padding: 4px 2px;
+  color: #fff;
+  background: #000000;
+  border-left: solid 1px #525252;
+  font-size: 0.9em;
+}
+
+/*his will be the color of even row*/
+.myGridClass .myAltRowClass { background: #fcfcfc repeat-x top; }
+
+/*and finally, we style the pager on the bottom*/
+.myGridClass .myPagerClass { background: #424242; }
+
+.myGridClass .myPagerClass table { margin: 5px 0; }
+
+.myGridClass .myPagerClass td {
+  border-width: 0;
+  padding: 0 6px;
+  border-left: solid 1px #666;
+  font-weight: bold;
+  color: #fff;
+  line-height: 12px;
+}
+
+.myGridClass .myPagerClass a { color: #666; text-decoration: none; }
+
+.myGridClass .myPagerClass a:hover { color: #000; text-decoration: none; } 
+
 	</style>
 </head>
 <body>
@@ -105,7 +152,8 @@
 	</div>
 	
    <form id="form1" runat="server">
-        <div class="container">
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <div class="container">
                 <asp:Button class="btn-primary" runat="server" Text="Logout" OnClick="Logout" style="margin-top: 21px; margin-left: 900px" />
             <h1>User Profile</h1>
             <div class="profile">
@@ -120,7 +168,28 @@
             </div>
             <asp:FileUpload ID="fileToUpload" runat="server" />
             <asp:Button ID="btnUpload" class="btn-primary" runat="server" Text="Upload Photo" OnClick="btnUpload_Click" style="margin-top: 21px" />
-        </div>
+           </div>
+
+       <br /> <br />
+       <asp:UpdatePanel ID="UpdatePanel" runat="server" UpdateMode="Conditional">
+         <ContentTemplate>
+       <h2 style="color:white"> Your Bookings</h2>
+       <asp:GridView ID="GridViewBookings" runat="server" AutoGenerateColumns="False" CssClass="myGridClass" AutoGenerateSelectButton="true">
+            <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
+            <Columns>
+                <asp:BoundField DataField="BookingID" HeaderText="Booking ID" />
+                <asp:BoundField DataField="RideID" HeaderText="Ride Number" />
+                <asp:BoundField DataField="Arrival" HeaderText="Arrival" />
+                <asp:BoundField DataField="Destination" HeaderText="Destination" />
+                <asp:BoundField DataField="TravelDate" HeaderText="Date" DataFormatString="{0:MM/dd/yyyy}"/>
+                <asp:BoundField DataField="TravelTime" HeaderText="Time" />
+                <asp:BoundField DataField="Seats" HeaderText="Passengers" />
+                <asp:BoundField DataField="Class" HeaderText="Class" />
+            </Columns>
+        </asp:GridView>
+                         <asp:Button ID="removebtn" class="btn-primary" runat="server" Text="Cancel Booking" OnClick="Cancel_Booking"/>
+                     </ContentTemplate>
+         </asp:UpdatePanel>
     </form>
 	
 <footer>
