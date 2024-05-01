@@ -67,6 +67,64 @@
         padding: 20px;
 		margin-top: 100px;
     }
+
+    .myGridClass {
+  width: 100%;
+  /*this will be the color of the odd row*/
+  background-color: #fff;
+  margin: 5px 0 10px 0;
+  border: solid 1px #525252;
+  border-collapse:collapse;
+}
+
+/*data elements*/
+.myGridClass td {
+  padding: 2px;
+  border: solid 1px #c1c1c1;
+  color: black;
+}
+
+/*header elements*/
+.myGridClass th {
+  padding: 4px 2px;
+  color: #fff;
+  background: #000000;
+  border-left: solid 1px #525252;
+  font-size: 0.9em;
+}
+
+/*his will be the color of even row*/
+.myGridClass .myAltRowClass { background: #fcfcfc repeat-x top; }
+
+/*and finally, we style the pager on the bottom*/
+.myGridClass .myPagerClass { background: #424242; }
+
+.myGridClass .myPagerClass table { margin: 5px 0; }
+
+.myGridClass .myPagerClass td {
+  border-width: 0;
+  padding: 0 6px;
+  border-left: solid 1px #666;
+  font-weight: bold;
+  color: #fff;
+  line-height: 12px;
+}
+
+.myGridClass .myPagerClass a { color: #666; text-decoration: none; }
+
+.myGridClass .myPagerClass a:hover { color: #000; text-decoration: none; } 
+
+.e-calendar {
+        background-color:darkviolet;
+        color: black;
+}
+
+.message {
+        color: red;
+        font-weight: bold;
+        margin-top: 10px;
+ }
+
   </style>
 </head>
 <body>
@@ -81,46 +139,80 @@
 <asp:HyperLink ID="lnk" class="right" runat="server" Text=""></asp:HyperLink>
        </div>
 	
-  <div class="container mt-5">
-    <h1 class="mb-4 text-center">Railway Booking</h1>
-    <div class="row">
-      <div class="col-md-6">
-        <img src="Images\p1.jpg" alt="Train" class="img-fluid mb-4" />
-      </div>
-      <div class="col-md-6">
-        <img src="Images\p2.jpg" alt="Booking" class="img-fluid mb-4" />
-      </div>
-    </div>
-    <form>
-      <div class="mb-3">
-        <label for="from" class="form-label">From</label>
-        <input type="text" class="form-control" id="from" placeholder="Enter departure station">
-      </div>
-      <div class="mb-3">
-        <label for="to" class="form-label">To</label>
-        <input type="text" class="form-control" id="to" placeholder="Enter destination station">
-      </div>
-      <div class="mb-3">
-        <label for="date" class="form-label">Date</label>
-        <input type="date" class="form-control" id="date">
-      </div>
-      <div class="mb-3">
-        <label for="passengers" class="form-label">Passengers</label>
-        <select class="form-select" id="passengers">
-          <option selected>Choose...</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </div>
-      <div class="text-center">
-        <button type="submit" class="btn btn-primary">Search</button>
-      </div>
-    </form>
-  </div>
-  
+   <form runat="server">
+     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+     <div class="container mt-5">
+         <h1 class="mb-4 text-center">Railway Booking</h1>
+         <asp:UpdatePanel ID="UpdatePanel" runat="server" UpdateMode="Conditional">
+             <ContentTemplate>
+                 <div class="row">
+                     <div class="col-md-6">
+                         <asp:Image ID="imgTrain" runat="server" ImageUrl="~/Images/p1.jpg" AlternateText="Train" CssClass="img-fluid mb-4" />
+                     </div>
+                     <div class="col-md-6">
+                         <asp:Image ID="imgBooking" runat="server" ImageUrl="~/Images/p2.jpg" AlternateText="Booking" CssClass="img-fluid mb-4" />
+                     </div>
+                 </div>
+                 <div class="mb-3">
+                     <asp:Label ID="lblFrom" runat="server" AssociatedControlID="from" Text="From"></asp:Label>
+                     <asp:TextBox ID="from" runat="server" CssClass="form-control" placeholder="Enter Arrival station" AutoPostBack="true" OnTextChanged="from_TextChanged"></asp:TextBox>
+                 </div>
+                 <div class="mb-3">
+                     <asp:Label ID="lblTo" runat="server" AssociatedControlID="to" Text="To"></asp:Label>
+                     <asp:TextBox ID="to" runat="server" CssClass="form-control" placeholder="Enter Destination station" AutoPostBack="true" OnTextChanged="to_TextChanged"></asp:TextBox>
+                 </div>
+                 <div class="text-input">
+                     <asp:Label ID="Label4" runat="server" Text="Select Date"></asp:Label>
+                     <asp:Calendar ID="Date" runat="server" CssClass="e-calendar" OnSelectionChanged="DateCalendar_SelectionChanged"></asp:Calendar>
+                 </div>
+                 <div class="text-center">
+                     <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-primary" OnClick="btnSearch_Click" />
+                 </div>
+                 <asp:GridView ID="scheduleGridView" runat="server" CssClass="myGridClass" AutoGenerateColumns="False" AutoGenerateSelectButton="true" EnableViewState="true" OnSelectedIndexChanged="scheduleGridView_SelectedIndexChanged">
+                     <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" /> 
+                     <Columns>
+                         <asp:BoundField DataField="RideID" HeaderText="Ride Number" />
+                         <asp:BoundField DataField="Arrival" HeaderText="Arrival Station" />
+                         <asp:BoundField DataField="Destination" HeaderText="Destination Station" />
+                         <asp:BoundField DataField="TravelDate" HeaderText="Date" DataFormatString="{0:MM/dd/yyyy}" />
+                         <asp:BoundField DataField="TravelTime" HeaderText="Time" />
+                         <asp:BoundField DataField="Available_Seats" HeaderText="Seats_Available" />
+                     </Columns>
+                 </asp:GridView>
+                 <div id="passengersSection" runat="server" visible="false">
+                     <div class="mb-3">
+                         <div class="text-input">
+                              <asp:Label ID="Label3" runat="server" AssociatedControlID="Passengers" Text=""></asp:Label>
+                             <asp:TextBox ID="Passengers" runat="server" required></asp:TextBox>
+                        </div> 
+                     </div>
+                     <div class="mb-3">
+                         <asp:Label ID="lblClass" runat="server" AssociatedControlID="type" Text="Ticket Class"></asp:Label>
+                         <asp:DropDownList ID="type" runat="server" CssClass="form-select">
+                             <asp:ListItem Text="Choose..." Selected="True"></asp:ListItem>
+                             <asp:ListItem Text="Economy"></asp:ListItem>
+                             <asp:ListItem Text="Business"></asp:ListItem>
+                         </asp:DropDownList>
+                     </div>
+                     <div class="mb-3">
+                         <asp:Label ID="lblRewards" runat="server" AssociatedControlID="Rewards" Text="Use Points"></asp:Label>
+                                <asp:DropDownList ID="Rewards" runat="server" CssClass="form-select">
+                                      <asp:ListItem Text="Choose..." Selected="True"></asp:ListItem>
+                                      <asp:ListItem Text="Discount"></asp:ListItem>
+                                      <asp:ListItem Text="Food"></asp:ListItem>
+                                </asp:DropDownList>
+                    </div>
+                     <asp:Label ID="totalBill" runat="server" Text="Total Bill "></asp:Label> <br /> <br />
+                     <asp:Button ID="btnBook" runat="server" Text="Book Now" CssClass="btn btn-primary" OnClick="btnBook_Click" />
+                     <asp:Button ID="purchasebtn" runat="server" Text="Purchase" Visible ="false" CssClass="btn btn-primary" OnClick="purchasebtn_Click" />
+                     <asp:Label ID="error" runat="server"  Text="" CssClass="message"></asp:Label>
+              </div>
+             </ContentTemplate>
+         </asp:UpdatePanel>
+     </div>
+ </form>
+ 
+   
 <footer>
 	<h2> Contact Us </h2>
 	<p> Telephone Number: 145-423-8724 </p>
