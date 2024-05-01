@@ -51,17 +51,12 @@
     <form id="form1" runat="server">
         <div class="container">
             <h1>Search Results</h1>
-            <div class="search-item">
-                <img src="item1.jpg" alt="Item 1" />
+            <div class="search-item">               
                 <h2>Item 1</h2>
-                <p>Description of Item 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Description of Item 1</p>
             </div>
-            <div class="search-item">
-                <img src="item2.jpg" alt="Item 2" />
-                <h2>Item 2</h2>
-                <p>Description of Item 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            <!-- Add more search items as needed -->
+             
+            
         </div>
     </form>
 </body>
