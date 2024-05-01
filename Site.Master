@@ -49,9 +49,12 @@
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Info">Update Info</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Login">Login</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Register">Register</a></li>
-                         <li class="nav-item"><a class="nav-link" runat="server" href="~/adminHome">admin</a></li>
-                          <li class="nav-item"><a class="nav-link" runat="server" href="~/payment">apayment</a></li>
-                    </ul>
+                         <li class="nav-item"><a class="nav-link" runat="server" href="~/review">review</a></li>
+                          <li class="nav-item"><a class="nav-link" runat="server" href="~/payment">payment</a></li>
+                           <li class="nav-item"><a class="nav-link" runat="server" href="~/search">Search</a></li>
+                 
+                 
+                        </ul>
                 </div>
             </div>
         </nav>
