@@ -478,9 +478,77 @@ You can order online medicines, health products, lab test services,online doctor
                     <h2>BP Operator</h2>
                     <p>Rs.2500</p>
                     <asp:TextBox ID="bpQuantity" runat="server" Type="Number" min="1" Text="1" />
-                   <%-- <asp:Button ID="addToCartBP" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click" />
-               --%> </div>
+                    <asp:Button ID="addToCartBP" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click" />
+                </div>
+                   <div class="product-card" id="vitaminC">
+       <img src="images/vitaminC.jpg" alt="Product 2" />
+       <h2>Vitamin C</h2>
+       <p>Rs.500</p>
+       <asp:TextBox ID="TextBox1" runat="server" Type="Number" min="1" Text="1" />
+       <asp:Button ID="Button1" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click" />
+   </div>
+
+                                <div class="product-card" id="pediasure">
+    <img src="images/pediasure.jpg" alt="Product 3" />
+    <h2>Vitamin C</h2>
+    <p>Rs.500</p>
+    <asp:TextBox ID="TextBox2" runat="server" Type="Number" min="1" Text="1" />
+    <asp:Button ID="Button2" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click" />
+</div>
+
+                                                <div class="product-card" id="Panadol">
+    <img src="images/Panadol.jpg" alt="Product 4" />
+    <h2>Panadol</h2>
+    <p>Rs.250</p>
+    <asp:TextBox ID="TextBox3" runat="server" Type="Number" min="1" Text="1" />
+    <asp:Button ID="Button3" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click" />
+</div>
+
+
+        <div class="product-card" id="Disprin">
+    <img src="images/Disprin.jpeg.jpg" alt="Product 5" />
+    <h2>Disprin</h2>
+    <p>Rs.250</p>
+    <asp:TextBox ID="TextBox4" runat="server" Type="Number" min="1" Text="1" />
+    <asp:Button ID="Button4" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click" />
+</div>
                
+                        <div class="product-card" id="Strepsils">
+    <img src="images/strepsils.jpg" alt="Product 6" />
+    <h2>strepsils</h2>
+    <p>Rs.50</p>
+    <asp:TextBox ID="TextBox5" runat="server" Type="Number" min="1" Text="1" />
+    <asp:Button ID="Button5" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click" />
+</div>
+                                     
+                <div class="product-card" id="Dove Soap">
+    <img src="images/Dove soap.jpg" alt="Product 7" />
+    <h2>Dove Soap</h2>
+    <p>Rs.150</p>
+    <asp:TextBox ID="TextBox6" runat="server" Type="Number" min="1" Text="1" />
+    <asp:Button ID="Button6" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click" />
+</div>
+
+ <div class="product-card" id="Johnson's">
+    <img src="images/Johnson's.jpg" alt="Product 8" />
+    <h2>Johnsons Shampoo</h2>
+    <p>Rs.350</p>
+    <asp:TextBox ID="TextBox7" runat="server" Type="Number" min="1" Text="1" />
+    <asp:Button ID="Button7" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click" />
+</div>
+
+                
+ <div class="product-card" id="Dettol">
+    <img src="images/dettol.jpg" alt="Product 9" />
+    <h2>Dettol</h2>
+    <p>Rs.350</p>
+    <asp:TextBox ID="TextBox8" runat="server" Type="Number" min="1" Text="1" />
+    <asp:Button ID="Button8" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click" />
+</div>
+
+
+
+
             </div>
 
             <div class="about">

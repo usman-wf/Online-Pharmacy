@@ -61,7 +61,14 @@ namespace db_Project
                 // Handle exceptions
                 ScriptManager.RegisterStartupScript(this, GetType(), "alert", $"alert('An error occurred: {ex.Message}');", true);
             }
+
         }
+
+        protected void AddToCartBP_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 

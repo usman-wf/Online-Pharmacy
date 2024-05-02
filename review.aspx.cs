@@ -28,40 +28,38 @@ namespace db_Project
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                try
-                {
+               
                     conn.Open(); 
                    
                     
                     
-                        int id = Users.CurrentUser.ID;
-                        int reviewId = 6; // Replace with actual review ID
+                        int customerID = Users.Instance.ID;
+                        //int reviewId = 8; // Replace with actual review ID
                         int medicineID = 1; // Replace with actual medicine ID
                         
                         //string reviewDetail = "Great medicine! Highly recommended."; // Replace with actual review
 
                         // SQL query to insert review into review table
-                        string insertQuery = "INSERT INTO review (reviewId,medicineID, customerID, reviewDetail) VALUES (reviewId , MedicineID, id, @reviewDetail)";
+                        string insertQuery = "INSERT INTO review (medicineID, customerID, reviewDetail) VALUES (@MedicineID, @customerID, @reviewDetail)";
                         SqlCommand insertCmd = new SqlCommand(insertQuery, conn);
-                       insertCmd.Parameters.AddWithValue("@reviewDetail", reviewDetail.Text);
-                        insertCmd.ExecuteNonQuery();
+                      // insertCmd.Parameters.AddWithValue("@reviewId", reviewId);
+                insertCmd.Parameters.AddWithValue("@medicineID", medicineID);
+                insertCmd.Parameters.AddWithValue("@customerID", customerID);
+   insertCmd.Parameters.AddWithValue("@reviewDetail", reviewDetail.Text);
+                
+                    insertCmd.ExecuteNonQuery();
 
 
                     
                  
-                }
-                catch (Exception ex)
-                {
-                    Response.Write("<script>alert('An error occurred. Please try again later.');</script>");
-                    Console.WriteLine("Error: " + ex.Message);  // Log error message
-                }
-                finally
-                {
+                
+         
+                
                     if (conn.State == ConnectionState.Open)
                     {
                         conn.Close();  // Ensure the connection is closed
                     }
-                }
+                
             }
         }
     }
