@@ -22,7 +22,7 @@ namespace db_Project
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string sql = "SELECT id , name, description, price FROM Items WHERE Name LIKE @query";
+                    string sql = "SELECT medicineId , name, description, price FROM Inventory WHERE Name LIKE @query";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.Parameters.AddWithValue("@query", "%" + query + "%");

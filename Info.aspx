@@ -14,6 +14,17 @@
     text-align: center;
 }
 
+        body{
+             font-family: Arial, sans-serif;
+ background-color: #f2f2f2;
+ margin: 0;
+ padding: 0;
+ background-image: url('images/background.jpeg');
+ background-size: 100%; /* Adjusts image size to cover the whole body */
+ background-repeat: no-repeat; /* Avoids repeating the image */
+          
+        }
+
 .form-group {
     margin-bottom: 20px;
     display: flex;

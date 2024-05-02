@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
+using System.Runtime.Remoting.Messaging;
 using System.Security.Policy;
 using System.Web;
 using System.Web.Security;
@@ -22,90 +23,135 @@ namespace db_Project
         }
 
 
+        //     protected void btnReviewClick(object sender, EventArgs e)
+        //     {
+        //         string connectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+
+        //         using (SqlConnection conn = new SqlConnection(connectionString))
+        //         {
+
+        //                 conn.Open();
+        //             int medicineId=0;
+        //                    string query = Request.QueryString["query"];
+        //                    string sql = "SELECT medicineID  FROM Inventory WHERE Name LIKE @query";
+        //             SqlCommand cmd = new SqlCommand(sql, conn);
+        //             using (SqlDataReader reader = cmd.ExecuteReader())
+        //                {
+        //                 cmd.Parameters.AddWithValue("@query", "%" + query + "%");
+        //                 if (reader.Read())
+        //                 {
+        //                   medicineId = Convert.ToInt32(reader["medicineID"]);
+        //                 }
+        //                 else
+        //                 {
+        //                     // Handle case where no result is found
+        //                     // Show a message to the user or return early
+        //                     return; // No medicine found
+        //                 }
+        //             }
+
+
+
+
+
+        //             int customerID = Users.Instance.ID;
+
+
+
+        //                     // SQL query to insert review into review table
+        //                     string insertQuery = "INSERT INTO review (medicineID, customerID, reviewDetail) VALUES (@medicineID, @customerID, @reviewDetail)";
+        //                     SqlCommand insertCmd = new SqlCommand(insertQuery, conn);
+        //                   // insertCmd.Parameters.AddWithValue("@reviewId", reviewId);
+        //             insertCmd.Parameters.AddWithValue("@medicineID", medicineId);
+        //             insertCmd.Parameters.AddWithValue("@customerID", customerID);
+        //insertCmd.Parameters.AddWithValue("@reviewDetail", reviewDetail.Text);
+
+        //                 insertCmd.ExecuteNonQuery();
+
+
+
+
+
+
+
+        //                 if (conn.State == ConnectionState.Open)
+        //                 {
+        //                     conn.Close();  // Ensure the connection is closed
+        //                 }
+
+        //         }
+        //     }
+
+
+
+
         protected void btnReviewClick(object sender, EventArgs e)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-               
-                    conn.Open(); 
-                   
-                    
-                    
-                        int customerID = Users.Instance.ID;
-                        //int reviewId = 8; // Replace with actual review ID
-                        int medicineID = 1; // Replace with actual medicine ID
-                        
-                        //string reviewDetail = "Great medicine! Highly recommended."; // Replace with actual review
+                try
+                {
+                    conn.Open();
 
-                        // SQL query to insert review into review table
-                        string insertQuery = "INSERT INTO review (medicineID, customerID, reviewDetail) VALUES (@MedicineID, @customerID, @reviewDetail)";
-                        SqlCommand insertCmd = new SqlCommand(insertQuery, conn);
-                      // insertCmd.Parameters.AddWithValue("@reviewId", reviewId);
-                insertCmd.Parameters.AddWithValue("@medicineID", medicineID);
-                insertCmd.Parameters.AddWithValue("@customerID", customerID);
-   insertCmd.Parameters.AddWithValue("@reviewDetail", reviewDetail.Text);
-                
+                    // Assuming there's a textbox to get the medicine name from the user
+                    string query = medicineName.Text; // or however you're getting the query
+
+                    if (string.IsNullOrEmpty(query))
+                    {
+                        // Show a message or provide feedback that input is required
+                        //errorLabel.Text = "Please enter a medicine name to search.";
+                        return;
+                    }
+
+                    string sql = "SELECT medicineID FROM Inventory WHERE Name LIKE @query";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@query", "%" + query + "%");
+
+                    int medicineId = 0;
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            medicineId = Convert.ToInt32(reader["medicineID"]);
+                        }
+                        else
+                        {
+                            // If no result, inform the user or handle accordingly
+                           // errorLabel.Text = "No medicine found with that name.";
+                            return;
+                        }
+                    }
+
+                    int customerID = Users.Instance.ID;
+                    string insertQuery = "INSERT INTO review (medicineID, customerID, reviewDetail) VALUES (@medicineID, @customerID, @reviewDetail)";
+                    SqlCommand insertCmd = new SqlCommand(insertQuery, conn);
+                    insertCmd.Parameters.AddWithValue("@medicineID", medicineId);
+                    insertCmd.Parameters.AddWithValue("@customerID", customerID);
+                    insertCmd.Parameters.AddWithValue("@reviewDetail", reviewDetail.Text);
+
                     insertCmd.ExecuteNonQuery();
 
-
-                    
-                 
-                
-         
-                
+                }
+                catch (Exception ex)
+                {
+                    // Handle exceptions or log errors
+                    System.Diagnostics.Debug.WriteLine($"Error: {ex.Message}");
+                }
+                finally
+                {
                     if (conn.State == ConnectionState.Open)
                     {
-                        conn.Close();  // Ensure the connection is closed
+                        conn.Close(); // Ensure the connection is closed
                     }
-                
+                }
             }
         }
+
+
+
     }
 
 }
 
-    //    string query = Request.QueryString["query"];
-
-    //        if (!string.IsNullOrEmpty(query))
-    //        {
-    //            // Connect to the database
-    //            string connectionString = "con"; // Change to your DB connection string
-    //            using (SqlConnection connection = new SqlConnection(connectionString))
-    //            {
-    //                connection.Open();
-    //                string sql = "SELECT id , name, description, price FROM Items WHERE Name LIKE @query";
-    //                using (SqlCommand command = new SqlCommand(sql, connection))
-    //                {
-    //                    command.Parameters.AddWithValue("@query", "%" + query + "%");
-
-    //                    using (SqlDataReader reader = command.ExecuteReader())
-    //                    {
-    //                        if (reader.HasRows)
-    //                        {
-    //                            string resultHtml = "";
-    //                            while (reader.Read())
-    //                            {
-    //                                resultHtml += $"<p><strong>Item:</strong> {reader["name"]}</p>";
-    //                                resultHtml += $"<p><strong>Description:</strong> {reader["description"]}</p>";
-    //                                resultHtml += $"<p><strong>Price:</strong> ${reader["price"]}</p><br/>";
-    //                            }
-
-                              
-    //                        }
-    //                        else
-    //                        {
-                              
-    //                        }
-    //                    }
-    //                }
-    //            }
-    //        }
-    //        else
-    //        {
-    //            ////resultDiv.InnerHtml = "No search query provided.";
-    //        }
-    //    }
-    //}
-////}
