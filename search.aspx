@@ -5,19 +5,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Search Results</title>
-    <style>
+   <%-- <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f2f2f2;
             margin: 0;
             padding: 0;
              font-family: Arial, sans-serif;
- background-color: #f2f2f2;
- margin: 0;
- padding: 0;
- background-image: url('images/back2.jpeg');
- background-size: 100%; /* Adjusts image size to cover the whole body */
- background-repeat: no-repeat; /* Avoids repeating the image */
+             background-color: #f2f2f2;
+             margin: 0;
+             padding: 0;
+             /*background-image: url('images/back2.jpeg');*/
+             background-size: 100%; /* Adjusts image size to cover the whole body */
+             background-repeat: no-repeat; /* Avoids repeating the image */
           
         }
         .container {
@@ -53,11 +53,11 @@
             margin: 5px 0;
             color: #666;
         }
-    </style>
+    </style>--%>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="container">
+       <%-- <div class="container">
             <h1>Search Results</h1>
             <div class="search-item">               
                 <h2>Item 1</h2>
@@ -65,7 +65,22 @@
             </div>
              
             
-        </div>
+        </div>--%>
+        <div>
+    <h2>Medicine Details</h2>
+    <div>
+        <p><strong>Name: </strong><asp:Label ID="lblName" runat="server"></asp:Label></p>
+        <p><strong>Description: </strong><asp:Label ID="lblDescription" runat="server"></asp:Label></p>
+        <p><strong>Price: </strong><asp:Label ID="lblPrice" runat="server"></asp:Label></p>
+        <p><strong>Manufacture Date: </strong><asp:Label ID="lblManufactureDate" runat="server"></asp:Label></p>
+        <p><strong>Expiry Date: </strong><asp:Label ID="lblExpiryDate" runat="server"></asp:Label></p>
+        <p><strong>Stock Quantity: </strong><asp:Label ID="lblStockQuantity" runat="server"></asp:Label></p>
+   <%--     <asp:Button ID="btnAddToCart" runat="server" Text="Add to Cart" OnClick="btnAddToCart_Click" />
+   --%> 
+
+    </div>
+</div>
+
     </form>
 </body>
 </html>

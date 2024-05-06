@@ -104,6 +104,8 @@
   <ItemGroup>
     <Content Include="Home.aspx" />
     <Content Include="adminHome.aspx" />
+    <Content Include="Item.cs.txt" />
+    <Content Include="premium.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -209,6 +211,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="DAL\myDAL.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Item.cs" />
+    <Compile Include="premium.aspx.cs">
+      <DependentUpon>premium.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="premium.aspx.designer.cs">
+      <DependentUpon>premium.aspx</DependentUpon>
     </Compile>
     <Compile Include="Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>

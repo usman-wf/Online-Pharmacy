@@ -269,168 +269,7 @@ right: 5%;
 
     </style>
 </head>
- <%--<body>
-    <header class="head">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <div class="row align-items-center justify-content-between">
-                    <div class="col">
-                        <div id="logo" class="d-flex align-items-center justify-content-start">
-                            <img src="images/logo2.png" alt="image not available" width="50" />
-                        </div>
-                    </div>
-                    <div class="col">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                              <%--  <li class="nav-item">
-                                    <a class="nav-link" href="login.aspx">Login</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="register.aspx">Register</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="Info.aspx">Update Info</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="payment.aspx">Payment</a>
-                                </li>
-                                 <li class="nav-item">
-     <a class="nav-link" href="adminHome.aspx">Admin</a>
- </li>
-                            </ul>
-                            <form class="searchBar" role="search">
-    <input id="searchInput" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-    <button id="searchButton" class="btn btn-outline-success" type="button">Search</button>
-</form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
-   
-
-    
-          <div class="back">
-            <h1>Our Products</h1>
-            <div class="catalog-container">
-                <div class="product-card">
-                    <img src="images/bp.jpg" alt="Product 1" />
-                    <h2>BP Operator</h2>
-                    <p>Rs.2500</p>
-                      <input type="number" min="1" value="1" id="bp-quantity" />
-                     <!-- Add to Cart button -->
-                     <button  class="add-to-cart-button" onclick="addToCart('BP Operator', 2500, document.getElementById('bp-quantity').value)">Add to Cart</button>
-
-                </div>
-                <div class="product-card">
-                    <img src="images/vitaminC.jpg" alt="Product 2" />
-                    <h2>vitamin C</h2>
-                    <p>Rs.550</p>
-                      <input type="number" min="1" value="1" id="bp-quantity" />
- <!-- Add to Cart button -->
- <button   class="add-to-cart-button" onclick="addToCart('BP Operator', 2500, document.getElementById('bp-quantity').value)">Add to Cart</button>
-
-                </div>
-                <div class="product-card">
-                    <img src="images/pediasure.jpg" alt="Product 3" />
-                    <h2>PediaSure</h2>
-                    <p>Rs.550</p>
-                      <input type="number" min="1" value="1" id="bp-quantity" />
- <!-- Add to Cart button -->
- <button   class="add-to-cart-button" onclick="addToCart('BP Operator', 2500, document.getElementById('bp-quantity').value)">Add to Cart</button>
-
-                </div>
-                <div class="product-card">
-                    <img src="images/Panadol.jpg" alt="Product 4" />
-                    <h2>Panadol</h2>
-                    <p>Rs.10</p>
-                      <input type="number" min="1" value="1" id="bp-quantity" />
- <!-- Add to Cart button -->
- <button   class="add-to-cart-button" onclick="addToCart('BP Operator', 2500, document.getElementById('bp-quantity').value)">Add to Cart</button>
-
-                </div>
-                <div class="product-card">
-                    <img src="images/Disprin.jpeg.jpg" alt="Product 5" />
-                    <h2>Disprin</h2>
-                    <p>Rs.20</p>
-                      <input type="number" min="1" value="1" id="bp-quantity" />
- <!-- Add to Cart button -->
- <button  class="add-to-cart-button" onclick="addToCart('BP Operator', 2500, document.getElementById('bp-quantity').value)">Add to Cart</button>
-
-                </div>
-                <div class="product-card">
-                    <img src="images/strepsils.jpg" alt="Product 6" />
-                    <h2>Strepsils</h2>
-                    <p>Rs.50</p>
-                      <input type="number" min="1" value="1" id="bp-quantity" />
- <!-- Add to Cart button -->
- <button   class="add-to-cart-button"  onclick ="addToCart('BP Operator', 2500, document.getElementById('bp-quantity').value)">Add to Cart</button>
-
-                </div>
-                <div class="product-card">
-                    <img src="images/Dove soap.jpg" alt="Product 7" />
-                    <h2>Dove Soap</h2>
-                    <p>Rs.500</p>
-                      <input type="number" min="1" value="1" id="bp-quantity" />
- <!-- Add to Cart button -->
- <button  class="add-to-cart-button" onclick ="addToCart('BP Operator', 2500, document.getElementById('bp-quantity').value)">Add to Cart</button>
-
-                </div>
-                <div class="product-card">
-                    <img src="images/Johnson's.jpg" alt="Product 8" />
-                    <h2>Johnsons Shampoo</h2>
-                    <p>Rs.450</p>
-                      <input type="number" min="1" value="1" id="bp-quantity" />
- <!-- Add to Cart button -->
- <button    class="add-to-cart-button" onclick="addToCart('BP Operator', 2500, document.getElementById('bp-quantity').value)">Add to Cart</button>
-
-                </div>
-                <div class="product-card">
-                    <img src="images/dettol.jpg" alt="Product 9" />
-                    <h2>Dettol</h2>
-                    <p>Rs.500</p>
-                      <input type="number" min="1" value="1" id="bp-quantity" />
- <!-- Add to Cart button -->
- <button   class="add-to-cart-button" onclick="addToCart('BP Operator', 2500, document.getElementById('bp-quantity').value)">Add to Cart</button>
-
-                </div>
-            </div>
-        
-            
-
-            <div class="about">
-                <h1>CLINIX</h1>
-                <p>
-                    Clinix is Pakistans leading digital healthcare platform that brings you complete health facilities right to your doorstep. Order medicines online with our e-pharmacy or consult top doctors online in Pakistan from our App right from the comfort of your home. Dawaai Pakistan is the first-ever internationally certified and registered healthcare merchant (LegitScript Certified). We pride ourselves in providing our users with authentic medicines, medical equipment and health supplements in Pakistan.
-<br>
-Moreover, you can opt to get to avail at-home care services such as home nursing services or book lab tests online. Over the years we have built trust by offering our users the utmost convenience to buy medicines. Get your prescriptions online and get monthly refill facilities with Dawaai Asaan orders. You can also get information about your medicines and learn its uses with our official medical content that will help you make better health choices.
-<br>
-You can order online medicines, health products, lab test services,online doctor consultations from anywhere in Pakistan with ease (Karachi, Islamabad, Lahore, Rawalpindi & more) by using our fast medicine delivery service . In Karachi, you can get your selected medicines within 60 minutes of your order confirmation with dShops. Our mobile application is available on iOS andandroid.
-
-                </p>
-            </div>
-
-            <section id="client-section">
-                <h1 class="h-primary center">Our Partners</h1>
-                <div id="clients">
-                    <div class="client-item">
-                        <img src="images/tcs.png" alt="" />
-                    </div>
-                    <div class="client-item">
-                        <img src="images/lab.jpeg" alt="" />
-                    </div>
-                    <div class="client-item">
-                        <img src="images/sk logo.png" alt="" />
-                    </div>
-                </div>
-            </section>
-        </div>
-  
-</body>--%>
+ 
 
     <body>
     <form id="form1" runat="server">
@@ -458,6 +297,9 @@ You can order online medicines, health products, lab test services,online doctor
                                     <li class="nav-item">
                                         <a class="nav-link" href="review.aspx">Review</a>
                                     </li>
+                                     <li class="nav-item">
+                                      <a class="nav-link" href="premium.aspx">Premium Features</a>
+                                 </li>
                                 </ul>
                                 <asp:Panel runat="server" CssClass="searchBar">
                                     <asp:TextBox ID="searchInput" CssClass="form-control me-2" runat="server" placeholder="Search"></asp:TextBox>
