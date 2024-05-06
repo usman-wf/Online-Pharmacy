@@ -50,7 +50,7 @@
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Login">Login</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Register">Register</a></li>
                          <li class="nav-item"><a class="nav-link" runat="server" href="~/review">review</a></li>
-                          <li class="nav-item"><a class="nav-link" runat="server" href="~/payment">payment</a></li>
+                          <li class="nav-item"><a class="nav-link" runat="server" href="~/ViewCart">payment</a></li>
                            <li class="nav-item"><a class="nav-link" runat="server" href="~/search">Search</a></li>
                            <li class="nav-item"><a class="nav-link" runat="server" href="~/premium">Premium</a></li>
                  

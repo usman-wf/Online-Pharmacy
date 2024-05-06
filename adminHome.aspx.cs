@@ -12,7 +12,7 @@ namespace db_Project
 {
     public partial class adminLogin : System.Web.UI.Page
     {
-        SqlConnection con = new SqlConnection(@"Data Source=A_rafay\SQLEXPRESS;Initial Catalog=pharmacy;Integrated Security=True;");
+        SqlConnection con = new SqlConnection(@"Data Source=USMAN;Initial Catalog=pharmacy;Integrated Security=True;");
         string a, b;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,27 +20,7 @@ namespace db_Project
         }
         protected void b1_Click(object sender, EventArgs e)
         {
-            //    try
-            //    {
-            //        if (f1.HasFile)
-            //        {
-            //            string filename=System.IO.Path.GetFileName(f1.FileName);
-
-            //            string filePath = "~/images1/" + filename;
-            //            f1.SaveAs(Server.MapPath(filePath));
-            //        }
-            //        else
-            //        {
-            //            // Notify user that no file was uploaded
-            //            Response.Write("<script>alert('No file was uploaded. Please select a file.');</script>");
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        // Display the exception message
-            //        Response.Write("<script>alert('An error occurred: " + ex.Message + "');</script>");
-            //    }
-
+            
             string name = t1.Text;
             string description = t2.Text;
             float price = float.Parse(t3.Text);
