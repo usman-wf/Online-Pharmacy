@@ -26,11 +26,12 @@ namespace db_Project
             string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
             SqlConnection con = new SqlConnection(strcon);
             con.Open();
-            SqlCommand cmd = new SqlCommand("INSERT INTO  UserInfo(Fname, Lname, email,password, phoneNo, address) VALUES (@firstname, @lastname, @email, @password,@phone, @address)", con);
+            SqlCommand cmd = new SqlCommand("INSERT INTO  UserInfo(Fname, Lname, email,password,acc_balance, phoneNo, address) VALUES (@firstname, @lastname, @email, @password,@balance,@phone, @address)", con);
             cmd.Parameters.AddWithValue("@firstname", firstname.Text.Trim());
             cmd.Parameters.AddWithValue("@lastname", lastname.Text.Trim());
             cmd.Parameters.AddWithValue("@email", email.Text.Trim());
             cmd.Parameters.AddWithValue("@password", password.Text);
+            cmd.Parameters.AddWithValue("@balance", balance.Text);
             cmd.Parameters.AddWithValue("@phone", phone.Text.Trim());
             cmd.Parameters.AddWithValue("@address", address.Text.Trim());
             cmd.ExecuteNonQuery();

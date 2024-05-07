@@ -20,6 +20,15 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+
+     body{
+      background-image: url('images/pay.jpg'); /* path to your image */
+ background-size: 100%; /* ensure the image covers the whole background */
+ background-position: center; /* center the image */
+ background-repeat: no-repeat; /* don't repeat the image */
+ height:100vh;
+ }
+
 /* Total Payment */
 .total-payment {
     margin-bottom: 20px;
@@ -49,6 +58,7 @@
    .centered-container {
       text-align: center;
       margin-top: 20px; /* Add some space at the top */
+      color:white;
   }
 
   /* Style for the drop-down */
@@ -65,6 +75,7 @@
   .styled-label {
       font-size: 18px; /* Larger font for the label */
       color: #555; /* Dark gray color for the label text */
+       color:white;
   }
 
     </style>

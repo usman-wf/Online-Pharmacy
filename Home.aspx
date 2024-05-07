@@ -103,6 +103,7 @@ opacity: 0.4;
 .about{
     background-color: black;
     color: white;
+    margin-bottom:0px;
 }
 
 .catalog-scroll-container {
@@ -156,6 +157,8 @@ white-space: nowrap;
 #logo img {
     max-width: 100%; /* Make sure the logo image doesn't exceed its container */
      /* Maintain aspect ratio */
+     height:50px;
+     width:50px;
 }
 
 #logo::before{
@@ -296,6 +299,9 @@ right: 5%;
                                     <li class="nav-item">
                                         <a class="nav-link" href="ViewCart.aspx">View Cart </a>
                                     </li>
+                                      <li class="nav-item">
+      <a class="nav-link" href="premium.aspx">Premium </a>
+  </li>
                                 </ul>
                                 <asp:Panel runat="server" CssClass="searchBar">
                                     <asp:TextBox ID="searchInput" CssClass="form-control me-2" runat="server" placeholder="Search"></asp:TextBox>
@@ -311,77 +317,70 @@ right: 5%;
         <div class="back">
             <h1>Our Products</h1>
             <div class="catalog-container">
-        <div class="product-card" id="bp operator" data-product-id="10">
+        <div class="product-card" id="bp operator"  >
             <img src="images/bp.jpg" alt="Product 1" />
             <h2>BP Operator</h2>
             <p>Rs.2500</p>
-            <asp:TextBox ID="bpQuantity" runat="server" Type="Number" min="1" Text="1" />
-            <asp:Button ID="addToCartBP" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click" CommandArgument="10" />
+            
+            <asp:Button ID="addToCartBP" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click"  CommandArgument="8"  />
         </div>
-       <div class="product-card" id="Vitamin C" data-product-id="11">
+       <div class="product-card" id="Vitamin C"  >
        <img src="images/vitaminC.jpg" alt="Product 2" />
        <h2>Vitamin C</h2>
        <p>Rs.500</p>
-       <asp:TextBox ID="TextBox1" runat="server" Type="Number" min="1" Text="1" />
-       <asp:Button ID="Button1" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click" CommandArgument="11"       />
+        <asp:Button ID="Button1" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click"   CommandArgument="9"    />
    </div>
 
-   <div class="product-card" id="Pedia sure" data-product-id="12">
+   <div class="product-card" id="Pedia sure"  >
     <img src="images/pediasure.jpg" alt="Product 3" />
     <h2>Pedia Sure</h2>
     <p>Rs.500</p>
-    <asp:TextBox ID="TextBox2" runat="server" Type="Number" min="1" Text="1" />
-    <asp:Button ID="Button2" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click" CommandArgument="12"   />
+     <asp:Button ID="Button2" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click"    CommandArgument="10"  />
 </div>
 
-                                                <div class="product-card" id="Panadol" data-product-id="1">
+                                                <div class="product-card" id="Panadol"  >
     <img src="images/Panadol.jpg" alt="Product 4" />
     <h2>Panadol</h2>
     <p>Rs.250</p>
-    <asp:TextBox ID="TextBox3" runat="server" Type="Number" min="1" Text="1" />
-    <asp:Button ID="Button3" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click" CommandArgument="1"   />
+     <asp:Button ID="Button3" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click"   CommandArgument="1"   />
 </div>
 
 
-        <div class="product-card" id="Disprin" data-product-id="13">
+        <div class="product-card" id="Disprin"  >
     <img src="images/Disprin.jpeg.jpg" alt="Product 5" />
     <h2>Disprin</h2>
     <p>Rs.250</p>
-    <asp:TextBox ID="TextBox4" runat="server" Type="Number" min="1" Text="1" />
-    <asp:Button ID="Button4" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click" CommandArgument="13"  />
+     <asp:Button ID="Button4" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click"  CommandArgument="7"  />
 </div>
                
-                        <div class="product-card" id="Strepsils" data-product-id="15">
+                        <div class="product-card" id="Strepsils"  >
     <img src="images/strepsils.jpg" alt="Product 6" />
     <h2>strepsils</h2>
     <p>Rs.50</p>
-    <asp:TextBox ID="TextBox5" runat="server" Type="Number" min="1" Text="1" />
-    <asp:Button ID="Button5" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click" CommandArgument="15"  />
+     <asp:Button ID="Button5" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click"  CommandArgument="11"   />
 </div>
                                      
-                <div class="product-card" id="Dove Soap" data-product-id="14">
+                <div class="product-card" id="dove soap"  >
     <img src="images/Dove soap.jpg" alt="Product 7" />
     <h2>Dove Soap</h2>
     <p>Rs.150</p>
-    <asp:TextBox ID="TextBox6" runat="server" Type="Number" min="1" Text="1" />
-    <asp:Button ID="Button6" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click" CommandArgument="14"   />
+      <asp:Button ID="Button6" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click"    CommandArgument="12"  />
 </div>
 
- <div class="product-card" id="Johnson's" data-product-id="17">
+ <div class="product-card" id="shampoo"  >
     <img src="images/Johnson's.jpg" alt="Product 8" />
     <h2>Johnsons Shampoo</h2>
     <p>Rs.350</p>
-    <asp:TextBox ID="TextBox7" runat="server" Type="Number" min="1" Text="1" />
-    <asp:Button ID="Button7" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click" CommandArgument="17"   />
+     <asp:Button ID="Button7" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click"    CommandArgument="13" />
 </div>
 
-                
- <div class="product-card" id="Dettol" data-product-id="16">
-    <img src="images/dettol.jpg" alt="Product 9" />
+ <div class="product-card" id="Dettol" >
+   <img src="images/dettol.jpg" alt="Product 9" />
     <h2>Dettol</h2>
     <p>Rs.350</p>
-    <asp:TextBox ID="TextBox8" runat="server" Type="Number" min="1" Text="1" />
-    <asp:Button ID="Button8" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click" CommandArgument="16"   />
+     <asp:Button ID="Button8" CssClass="add-to-cart-button" runat="server" Text="Add to Cart" OnClick="AddToCartBP_Click" CommandArgument="14"   />
+                
+ 
 </div>
 
 

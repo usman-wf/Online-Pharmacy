@@ -60,6 +60,15 @@ namespace db_Project
         protected global::System.Web.UI.WebControls.TextBox password;
 
         /// <summary>
+        /// balance control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox balance;
+
+        /// <summary>
         /// phone control.
         /// </summary>
         /// <remarks>

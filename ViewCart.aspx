@@ -6,6 +6,15 @@
         <!-- Add your CSS stylesheets here -->
         <style>
         /* CSS styles for the GridView */
+        body{
+                     background-image: url('images/cartBackground.jpg');
+  background-size: cover; /* ensure the image covers the whole background */
+background-position: center; /* center the image */
+background-repeat: no-repeat;  /* Avoids repeating the image */
+height:100vh; /* Set the height to 100% of the viewport height */
+
+        }
+      
         .gridview-container {
             font-family: Arial, sans-serif;
             margin: 20px auto;

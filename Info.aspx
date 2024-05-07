@@ -19,9 +19,10 @@
  background-color: #f2f2f2;
  margin: 0;
  padding: 0;
- background-image: url('images/background.jpeg');
- background-size: 100%; /* Adjusts image size to cover the whole body */
- background-repeat: no-repeat; /* Avoids repeating the image */
+ background-image: url('images/background.jpg');
+  background-size: cover; /* ensure the image covers the whole background */
+background-position: center; /* center the image */
+background-repeat: no-repeat;  /* Avoids repeating the image */
           
         }
 

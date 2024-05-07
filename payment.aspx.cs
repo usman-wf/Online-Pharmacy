@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
@@ -69,6 +70,8 @@ namespace db_Project
             int premium = checkPremiumpackage(userId);
             int yearlypackage = checkYearlyPackage(userId);
             string location = ddlCities.SelectedValue;
+           
+
 
             string query2 = "UPDATE userInfo SET totalOrders = totalOrders + 1 WHERE id = @UserId";
 
@@ -148,7 +151,16 @@ namespace db_Project
 
                     // Update user's account balance in the database
                     UpdateUserAccountBalance(userId, newAccountBalance); // Implement this method to update user's account balance
-
+                    List<Tuple<int, int>> cartItems = Session["QtyDeduction"] as List<Tuple<int, int>>;
+                    foreach (var cartItem in cartItems)
+                    {
+                        int medicineId = cartItem.Item1; // Medicine ID
+                        int quantity = cartItem.Item2; // Quantity
+                        int totalstk = StockQuantity(medicineId);
+                        quantity = totalstk - quantity;
+                        UpdateQuantity(medicineId, quantity);
+                    }
+                    Session["CartItems"] = null;
                     // Redirect to the home page or any other appropriate page
                     Response.Redirect("Home.aspx");
                 }
@@ -162,6 +174,109 @@ namespace db_Project
                 }
             }
         }
+
+
+        protected void UpdateQuantity(int medicineId,int quantity)
+        {
+            // Create a connection to the database
+            string connectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+
+            //// Loop through each cart item in the session
+            //foreach (var cartItem in cartItems)
+            //{
+            //    int medicineId = cartItem.Item1; // Medicine ID
+            //    int quantity = cartItem.Item2; // Quantity
+
+                // SQL query to update the stock quantity of the medicine
+                string query = "UPDATE Inventory SET stockQuantity =@Quantity WHERE medicineId = @medicineId";
+
+                // Create and open a connection to the database
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    // Create a command to execute the query
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        // Add parameters to the command
+                        command.Parameters.AddWithValue("@Quantity", quantity);
+                        command.Parameters.AddWithValue("@MedicineId", medicineId);
+
+                        try
+                        {
+                            // Open the connection
+                            connection.Open();
+
+                            // Execute the query
+                            int rowsAffected = command.ExecuteNonQuery();
+
+                            // Check if any rows were affected (i.e., if the update was successful)
+                            if (rowsAffected > 0)
+                            {
+                                // Update successful
+                                // You can add logging or other handling here if needed
+                            }
+                            else
+                            {
+                                Response.Write("<script>alert('No change .');</script>");
+                                return;
+                                // Update failed
+                                // You can add logging or other handling here if needed
+                            }
+
+                        }
+                        catch (Exception ex)
+                        {
+                            // Handle any exceptions here
+                            // You might want to log the error or display a message to the user
+                        }
+                    }
+                }
+            //}
+        }
+        protected int StockQuantity(int medicineId)
+        {
+            // Create a connection to the database
+            string connectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+
+            //// Loop through each cart item in the session
+            //foreach (var cartItem in cartItems)
+            //{
+            //    int medicineId = cartItem.Item1; // Medicine ID
+            //    int quantity = cartItem.Item2; // Quantity
+
+
+            int stockQuantity = 0;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                // SQL query to retrieve the stock quantity based on medicineId
+                string query = "SELECT StockQuantity FROM Inventory WHERE medicineId = @medicineId";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    // Parameterized query to avoid SQL injection
+                    cmd.Parameters.AddWithValue("@medicineId", medicineId);
+
+                    var result = cmd.ExecuteScalar(); // ExecuteScalar returns the first column of the first row
+
+                    if (result != null && int.TryParse(result.ToString(), out stockQuantity))
+                    {
+                        return stockQuantity;
+                    }
+                    else
+                    {
+                        throw new Exception("Medicine not found in Inventory");
+                    }
+                }
+            }
+
+            return stockQuantity;
+        }
+    
+
+
+
 
         public decimal GetUserAccountBalance(int userAccountId)
         {

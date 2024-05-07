@@ -9,32 +9,50 @@
     <title>Login</title>
     <!-- Importing CSS from Google Fonts and applying internal CSS -->
     <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+
     @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
     * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+        
+          
+        
         font-family: 'Poppins', sans-serif;
     }
+
+
+   
+
     html, body {
+
         display: grid;
         height: 100%;
         width: 100%;
         place-items: center;
-        background: #f2f2f2;
+        background-color:mediumpurple;
     }
+
+     body{
+      background-image: url('images/loginBack.jpg'); /* path to your image */
+ background-size: cover; /* ensure the image covers the whole background */
+ background-position: center; /* center the image */
+ background-repeat: no-repeat; /* don't repeat the image */
+ }
+
     .wrapper {
         width: 380px;
-        background: #fff;
+         
         border-radius: 15px;
         box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
+        color:darkorchid
     }
     .title {
         font-size: 35px;
         font-weight: 600;
         text-align: center;
         line-height: 100px;
-        color: #fff;
+         color:violet;
         user-select: none;
         border-radius: 15px 15px 0 0;
         background: linear-gradient(-135deg, #c850c0, #4158d0);
@@ -47,10 +65,11 @@
     }
     .field input {
         height: 100%;
+        
         width: 100%;
         outline: none;
         font-size: 17px;
-        padding-left: 20px;
+         
         border: 1px solid lightgrey;
         border-radius: 25px;
         transition: all 0.3s ease;
@@ -84,7 +103,7 @@
         justify-content: space-between;
     }
     .checkbox {
-        display: flex;
+        display: block;
         align-items: center;
         justify-content: center;
     }
@@ -142,32 +161,51 @@
     display: inline; /* Keep labels visible */
     vertical-align: middle;
 }
+
+#userInput{
+    color:darkviolet;
+}
+
+
+.radio-buttons-list {
+    display: flex;
+    flex-direction: column;  /* Ensures vertical stacking of radio buttons */
+    gap: 10px;  /* Adds space between each radio button item */
+}
+
+.radio-buttons-list input {
+    margin-right: 10px;  /* Ensures enough space between radio button and text */
+}
+
+.radio-buttons-list label {
+    color: black;  /* Ensures text visibility */
+    display: inline-flex;  /* Keeps the label aligned with the radio button */
+    align-items: center;  /* Aligns text vertically with the radio button */
+}
+
     </style>
 </head>
 <body>
     <div class="wrapper">
     
         <div class="title">Login To Account</div>
-        <form runat="server">
-                <div class="field">
-   <asp:RadioButtonList
-    runat="server"
-    ID="rblRole"
-    RepeatDirection="Vertical"
-    CssClass="radio-buttons-list">
-    <asp:ListItem Text="Admin" Value="Admin" /> 
-      
-    <asp:ListItem Text="Customer" Value="Customer" />
-</asp:RadioButtonList>
+        <form runat="server" id ="userInput">
 
-        </div>
+  <asp:RadioButtonList   runat="server"   ID="rblRole"  RepeatDirection="Vertical"     CssClass="radio-buttons-list">
+        
+    
+    <asp:ListItem Text="Admin" Value="Admin" />
+    <asp:ListItem Text="Customer" Value="Customer" />
+    
+</asp:RadioButtonList>
+        
             <div class="field">
                 <asp:TextBox runat="server" ID="txtEmail" placeholder="Email" required="required"></asp:TextBox>
-                <label>Email Address</label>
+                 
             </div>
             <div class="field">
                 <asp:TextBox runat="server" ID="txtPassword" TextMode="Password" required="required" placeholder="Password"></asp:TextBox>
-                <label>Password</label>
+           
             </div>
             
             <div class="field">

@@ -94,6 +94,12 @@
      <label for="password">Password:</label>
      <asp:TextBox ID="password" runat="server" TextMode="Password" Required="true"></asp:TextBox>
  </div>
+
+                        <div class="form-group">
+    <label for="balance">Balance:</label>
+    <asp:TextBox ID="balance" runat="server" TextMode="number" Required="true"></asp:TextBox>
+</div>
+
             <div class="form-group">
                 <label for="phone">Phone Number:</label>
                 <asp:TextBox ID="phone" runat="server" TextMode="Phone" Required="true"></asp:TextBox>
