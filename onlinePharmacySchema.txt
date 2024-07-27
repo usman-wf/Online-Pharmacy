@@ -1,0 +1,86 @@
+Table userInfo {
+  id INT [primary key, increment] 
+  Fname CHAR(10) [not null]
+  Lname CHAR(10)
+  address VARCHAR(50) [not null]
+  paymentInfo VARCHAR(20) [not null]
+  phoneNo VARCHAR(15) [not null]
+  email VARCHAR(30) [not null, unique]
+  password VARCHAR(20)
+  isPremium BIT
+  hasYearlyPackage BIT
+}
+
+Table Orders {
+  orderId INT [primary key, increment] 
+  userId INT [ref: > userInfo.id]
+  amountPaid FLOAT
+  orderDate DATE
+  receivedDate DATE
+}
+
+Table Admin {
+  adminId INT [primary key, increment] 
+  Fname CHAR(10) [not null]
+  Lname CHAR(10)
+  phoneNo VARCHAR(15) [not null]
+  email VARCHAR(30) [not null, unique]
+  password VARCHAR(20)
+}
+
+Table Inventory {
+  medicineId INT [primary key, increment] 
+  name VARCHAR(30) [not null]
+  description VARCHAR(50)
+  price FLOAT [not null]
+  manufactureDate DATE [not null]
+  expiryDate DATE [not null]
+  stockQuantity INT
+}
+
+Table review {
+  reviewId INT [primary key, increment] 
+  medicineID INT [ref: > Inventory.medicineId]
+  customerID INT [ref: > userInfo.id]
+  reviewDetail CHAR(80)
+}
+
+INSERT INTO userInfo (Fname, Lname, address, paymentInfo, phoneNo, email, password, isPremium, hasYearlyPackage)
+VALUES
+('Ahmed', 'Ali', 'Street 1, Karachi', 'Credit Card', '03123456789', 'ahmed.ali@example.com', 'password123', 1, 1),
+('Sara', 'Khan', 'Street 2, Lahore', 'Debit Card', '03214567890', 'sara.khan@example.com', 'password123', 0, 0),
+('Usman', 'Malik', 'Street 3, Islamabad', 'PayPal', '03325678901', 'usman.malik@example.com', 'password123', 1, 0),
+('Ayesha', 'Shaikh', 'Street 4, Peshawar', 'Cash', '03436789012', 'ayesha.shaikh@example.com', 'password123', 0, 1),
+('Zain', 'Raza', 'Street 5, Quetta', 'Credit Card', '03547890123', 'zain.raza@example.com', 'password123', 1, 1);
+
+INSERT INTO Orders (userId, amountPaid, orderDate, receivedDate)
+VALUES
+(1, 1500.00, '2024-07-01', '2024-07-05'),
+(2, 2500.50, '2024-07-02', '2024-07-06'),
+(3, 3500.75, '2024-07-03', '2024-07-07'),
+(4, 4500.25, '2024-07-04', '2024-07-08'),
+(5, 5500.00, '2024-07-05', '2024-07-09');
+
+INSERT INTO Admin (Fname, Lname, phoneNo, email, password)
+VALUES
+('Fahad', 'Hassan', '03001234567', 'fahad.hassan@example.com', 'adminpass1'),
+('Hina', 'Zafar', '03012345678', 'hina.zafar@example.com', 'adminpass2'),
+('Ali', 'Rizvi', '03023456789', 'ali.rizvi@example.com', 'adminpass3'),
+('Nida', 'Ahmed', '03034567890', 'nida.ahmed@example.com', 'adminpass4'),
+('Bilal', 'Siddiqui', '03045678901', 'bilal.siddiqui@example.com', 'adminpass5');
+
+INSERT INTO Inventory (name, description, price, manufactureDate, expiryDate, stockQuantity)
+VALUES
+('Paracetamol', 'Pain reliever', 50.00, '2024-01-01', '2025-01-01', 100),
+('Ibuprofen', 'Anti-inflammatory', 100.00, '2024-02-01', '2025-02-01', 200),
+('Amoxicillin', 'Antibiotic', 150.00, '2024-03-01', '2025-03-01', 150),
+('Cetrizine', 'Antihistamine', 75.00, '2024-04-01', '2025-04-01', 120),
+('Metformin', 'Diabetes medication', 200.00, '2024-05-01', '2025-05-01', 80);
+
+INSERT INTO review (medicineID, customerID, reviewDetail)
+VALUES
+(1, 1, 'Very effective'),
+(2, 2, 'Works well'),
+(3, 3, 'Good quality'),
+(4, 4, 'Highly recommended'),
+(5, 5, 'Satisfied with the product');
